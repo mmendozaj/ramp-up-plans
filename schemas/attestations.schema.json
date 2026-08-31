@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ba-labs.example/schemas/ramp-up-attestations.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "updated_at_utc", "tracks", "programs"],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 1},
+    "updated_at_utc": {"type": "string", "format": "date-time"},
+    "tracks": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/trackAttestation"}
+    },
+    "programs": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/programAttestation"}
+    }
+  },
+  "$defs": {
+    "nullablePhase": {"type": ["string", "null"]},
+    "phaseActivation": {
+      "type": "object",
+      "properties": {
+        "source": {"type": "string", "minLength": 1},
+        "expected_execution_utc": {"type": "string"},
+        "executed_at_utc": {"type": "string", "format": "date-time"}
+      }
+    },
+    "kpi": {
+      "type": "object",
+      "required": ["id", "label", "required", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "required": {"type": "boolean"},
+        "status": {"enum": ["complete", "missing", "pending"]},
+        "evidence_url": {"type": ["string", "null"]}
+      }
+    },
+    "trackAttestation": {
+      "type": "object",
+      "required": ["status", "current_phase_id", "target_phase_id", "operator_changes_authorized", "qualitative_kpis"],
+      "properties": {
+        "status": {"enum": ["active", "eligible", "transitioning", "paused", "blocked", "needs_confirmation", "review_required"]},
+        "current_phase_id": {"$ref": "#/$defs/nullablePhase"},
+        "target_phase_id": {"$ref": "#/$defs/nullablePhase"},
+        "operator_changes_authorized": {"type": "boolean"},
+        "pause_reason": {"type": "string", "minLength": 1},
+        "target_date_utc": {"type": "string", "format": "date-time"},
+        "phase_activations": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/phaseActivation"}
+        },
+        "qualitative_kpis": {"type": "array", "items": {"$ref": "#/$defs/kpi"}}
+      }
+    },
+    "programAttestation": {
+      "type": "object",
+      "required": ["status", "operator_changes_authorized"],
+      "properties": {
+        "status": {"type": "string", "minLength": 1},
+        "operator_changes_authorized": {"type": "boolean"}
+      }
+    }
+  }
+}

@@ -1,0 +1,730 @@
+{
+  "schema_version": 2,
+  "version": "2026-08-28.3",
+  "policy_defaults": {
+    "hop_seconds": 57600,
+    "max_change": "1.20",
+    "operating_cadence_seconds": 86400
+  },
+  "primes": [
+    {
+      "id": "grove",
+      "name": "Grove",
+      "tracks": [
+        {
+          "id": "grove-basin-jtrsy",
+          "name": "JTRSY Basin",
+          "facet": "BasinFacet",
+          "instance": "JTRSY Grove Basin",
+          "kind": "instance",
+          "plan_note": "Dates are milestone-dependent and phases may be delayed if KPIs are not met or the spell schedule changes.",
+          "rate_limit_metadata": [
+            {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "decimals": 18}
+          ],
+          "exposure_source": {
+            "kind": "rrc_allocation",
+            "url": "https://sky.data.blockanalitica.com/internal/rrc/primes/grove/allocations/?limit=100",
+            "token_address": "0xf08943f817e1f902debc884c7b19ea5764594ac9",
+            "wallet_address": "0x0dcd9298e163dfd3c0b5b00f0d9093c36e40a153"
+          },
+          "sources": [
+            {
+              "label": "JTRSY Basin ramp-up plan",
+              "url": "https://docs.google.com/document/d/1-Sb3-8927E7iigTKpAzMNKEBAb0jUmmeryqI3glxYRA/edit?tab=t.0",
+              "visibility": "restricted"
+            },
+            {
+              "label": "Grove August 27 governance thread",
+              "url": "https://forum.skyeco.com/t/august-27-2026-proposed-changes-to-grove-for-upcoming-spell/28164/7",
+              "visibility": "public"
+            }
+          ],
+          "phases": [
+            {
+              "id": "phase-1",
+              "name": "Phase 1",
+              "earliest_transition": "2026-06-22",
+              "minimum_exposure_usd": 1000000,
+              "minimum_exposure_days": 14,
+              "requirements": [
+                "Complete the initial Basin and DPAU mechanics testing period.",
+                "Perform every available Basin and DPAU operation.",
+                "Review and test the circuit breaker setup.",
+                "Confirm final legal binding terms, including an approximately five-business-day wind-down and allocation of responsibilities and claims.",
+                "Enable BA Labs monitoring of trades, allocations, fees, and the JTRSY Basin module."
+              ],
+              "dc_iam": {"duty": 0, "max_line_usd": 5000000, "gap_usd": 1000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 100, "maximum_exposure_usd": 2500000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-2",
+              "name": "Phase 2",
+              "earliest_transition": "2026-08-13",
+              "transition_window_end": "2026-08-17",
+              "minimum_exposure_usd": 4000000,
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 10000000, "gap_usd": 2000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 25, "maximum_exposure_usd": 5000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-3",
+              "name": "Phase 3",
+              "earliest_transition": "2026-08-27",
+              "transition_window_end": "2026-08-31",
+              "minimum_exposure_usd": 10000000,
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 25000000, "gap_usd": 5000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 10, "maximum_exposure_usd": 12500000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-4",
+              "name": "Phase 4",
+              "tentative": true,
+              "earliest_transition": "2026-09-10",
+              "transition_window_end": "2026-09-14",
+              "minimum_exposure_usd": 33000000,
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 100000000, "gap_usd": 15000000, "ttl_seconds": 43200},
+              "offchain": {"crr_percent": 1.5, "maximum_exposure_usd": 50000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-5",
+              "name": "Phase 5",
+              "tentative": true,
+              "earliest_transition": "2026-09-24",
+              "transition_window_end": "2026-09-28",
+              "minimum_exposure_usd": 100000000,
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 1000000000, "gap_usd": 150000000, "ttl_seconds": 43200},
+              "offchain": {"crr_percent": 0.5, "maximum_exposure_usd": 500000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "grove-basin-buidl",
+          "name": "BUIDL Basin",
+          "facet": "BasinFacet",
+          "instance": "BUIDL Grove Basin",
+          "kind": "instance",
+          "plan_note": "Dates are milestone-dependent and phases may be delayed if KPIs are not met or the spell schedule changes.",
+          "rate_limit_metadata": [
+            {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "decimals": 18}
+          ],
+          "exposure_source": {
+            "kind": "rrc_allocation",
+            "url": "https://sky.data.blockanalitica.com/internal/rrc/primes/grove/allocations/?limit=100",
+            "token_address": "0xcba428fb052b365557daf52b744dfff20d5fbedd",
+            "wallet_address": "0x0dcd9298e163dfd3c0b5b00f0d9093c36e40a153"
+          },
+          "sources": [
+            {
+              "label": "Basin ramp-up plan",
+              "url": "https://docs.google.com/document/d/1-Sb3-8927E7iigTKpAzMNKEBAb0jUmmeryqI3glxYRA/edit?tab=t.0",
+              "visibility": "restricted"
+            }
+          ],
+          "phases": [
+            {
+              "id": "phase-1",
+              "name": "Phase 1",
+              "earliest_transition": "2026-06-22",
+              "minimum_exposure_usd": 1000000,
+              "minimum_exposure_days": 14,
+              "requirements": [
+                "Complete the initial Basin and DPAU mechanics testing period.",
+                "Perform every available Basin and DPAU operation.",
+                "Review and test the circuit breaker setup.",
+                "Confirm final legal binding terms, including an approximately five-business-day wind-down and allocation of responsibilities and claims.",
+                "Enable BA Labs monitoring of trades, allocations, fees, and the BUIDL Basin module."
+              ],
+              "dc_iam": {"duty": 0, "max_line_usd": 5000000, "gap_usd": 1000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 100, "maximum_exposure_usd": 2500000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-2",
+              "name": "Phase 2",
+              "earliest_transition": "2026-08-13",
+              "minimum_exposure_usd": 4000000,
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 10000000, "gap_usd": 2000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 25, "maximum_exposure_usd": 5000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-3",
+              "name": "Phase 3",
+              "earliest_transition": "2026-08-27",
+              "minimum_exposure_usd": 10000000,
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 25000000, "gap_usd": 5000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 10, "maximum_exposure_usd": 12500000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-4",
+              "name": "Phase 4",
+              "tentative": true,
+              "earliest_transition": "2026-09-10",
+              "minimum_exposure_usd": 33000000,
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 100000000, "gap_usd": 15000000, "ttl_seconds": 43200},
+              "offchain": {"crr_percent": 1.5, "maximum_exposure_usd": 50000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-5",
+              "name": "Phase 5",
+              "tentative": true,
+              "earliest_transition": "2026-09-24",
+              "minimum_exposure_usd": 100000000,
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 1000000000, "gap_usd": 150000000, "ttl_seconds": 43200},
+              "offchain": {"crr_percent": 0.5, "maximum_exposure_usd": 500000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "grove-uniswap-v3",
+          "name": "AUSD / USDC",
+          "facet": "UniswapV3Facet",
+          "instance": "AUSD-USDC",
+          "kind": "pool",
+          "plan_note": "Dates are milestone-dependent and phases may be delayed if KPIs are not met or the spell schedule changes.",
+          "exposure_source": {
+            "kind": "rrc_allocation",
+            "url": "https://sky.data.blockanalitica.com/internal/rrc/primes/grove/allocations/?limit=100",
+            "token_address": "0xbafead7c60ea473758ed6c6021505e8bbd7e8e5d",
+            "wallet_address": "0x0dcd9298e163dfd3c0b5b00f0d9093c36e40a153"
+          },
+          "sources": [
+            {
+              "label": "UniswapV3Facet ramp-up plan",
+              "url": "https://docs.google.com/document/d/1dJRFtjh-rqqT5XYBeP4M0YctckMcgg4_pp5nAK-e200/edit?tab=t.0",
+              "visibility": "restricted"
+            },
+            {
+              "label": "Grove August 27 governance thread",
+              "url": "https://forum.skyeco.com/t/august-27-2026-proposed-changes-to-grove-for-upcoming-spell/28164/7",
+              "visibility": "public"
+            }
+          ],
+          "phases": [
+            {
+              "id": "phase-1",
+              "name": "Phase 1",
+              "earliest_transition": "2026-08-13",
+              "transition_window_end": "2026-08-17",
+              "minimum_exposure_usd": 1000000,
+              "minimum_exposure_days": 14,
+              "absolute_minimum_days": 10,
+              "requirements": [
+                "Exercise both enabled swap directions.",
+                "Create the initial liquidity position and then add liquidity to the existing position.",
+                "Complete a bounded partial liquidity removal and a complete exit, then restore the required exposure.",
+                "Keep every Uniswap v3 operation within ticks -10 and 10 and below 10 bps slippage.",
+                "Verify deposit, withdrawal, and swap rate-limit accounting by realised amounts.",
+                "Maintain 1 million USD of pool exposure until the next spell, with an absolute minimum of 10 days.",
+                "Treat updateIntegrations, setMaxSlippage, setTWAPSecondsAgo, key validation, and expected-revert scenarios as pre-flight or simulation evidence."
+              ],
+              "operation_plan": [
+                {"order": 1, "action": "USDS mint", "amount": "approximately 1M USDS", "expected": "Mint USDS to the Grove proxy and consume the mint/burn rate limit."},
+                {"order": 2, "action": "PSM USDS to USDC swap", "amount": "approximately 1M USDS", "expected": "Receive USDC and consume the USDC PSM swap rate limit."},
+                {"order": 3, "action": "Uniswap V3 USDC to AUSD swap", "amount": "approximately 750K USDC", "expected": "Receive AUSD within minAmountOut and consume the USDC swap limit."},
+                {"order": 4, "action": "Uniswap V3 AUSD to USDC swap", "amount": "approximately 250K AUSD", "expected": "Receive USDC and leave approximately 500K AUSD for the liquidity position."},
+                {"order": 5, "action": "Create liquidity position", "amount": "100K USD total position value", "expected": "Mint a new tokenId over ticks -10 to 10 and consume aggregate and token deposit limits."},
+                {"order": 6, "action": "Partial liquidity removal", "amount": "approximately 1K USD", "expected": "Return assets while leaving the position open; consume withdrawal limits and restore deposit capacity."},
+                {"order": 7, "action": "Complete liquidity removal", "amount": "approximately 99K USD", "expected": "Close the bounded roundtrip by reducing position liquidity to zero."},
+                {"order": 8, "action": "Restore long-term liquidity", "amount": "1M USD total position value", "expected": "Increase the existing tokenId and establish the minimum exposure for Phase 2."}
+              ],
+              "dc_iam": {"duty": 0, "max_line_usd": 10000000, "gap_usd": 2000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 100, "maximum_exposure_usd": 5000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_USDC_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_SWAP_AUSD_AUSD-USDC", "max_amount_usd": 1000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_UNISWAP_V3_SWAP_USDC_AUSD-USDC", "max_amount_usd": 1000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_AUSD_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_USDC_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-2",
+              "name": "Phase 2",
+              "earliest_transition": "2026-08-27",
+              "transition_window_end": "2026-08-31",
+              "minimum_exposure_usd": 4000000,
+              "minimum_exposure_days": 14,
+              "absolute_minimum_days": 10,
+              "requirements": [
+                "Supply the required exposure as soon as possible and maintain it until the next spell.",
+                "If 5 million USD was already allocated in Phase 1, maintain that allocation for four weeks; allocating above 4 million does not shorten the duration requirement."
+              ],
+              "dc_iam": {"duty": 0, "max_line_usd": 25000000, "gap_usd": 5000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 25, "maximum_exposure_usd": 10000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 350000},
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 350000},
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_USDC_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 350000},
+                {"label": "LIMIT_UNISWAP_V3_SWAP_AUSD_AUSD-USDC", "max_amount_usd": 1000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_UNISWAP_V3_SWAP_USDC_AUSD-USDC", "max_amount_usd": 1000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_AUSD_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_USDC_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-3",
+              "name": "Phase 3",
+              "earliest_transition": "2026-09-10",
+              "transition_window_end": "2026-09-14",
+              "minimum_exposure_usd": 20000000,
+              "minimum_exposure_days": 14,
+              "absolute_minimum_days": 10,
+              "dc_iam": {"duty": 0, "max_line_usd": 100000000, "gap_usd": 15000000, "ttl_seconds": 43200},
+              "offchain": {"crr_percent": 10, "maximum_exposure_usd": 25000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_USDC_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_UNISWAP_V3_SWAP_AUSD_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_UNISWAP_V3_SWAP_USDC_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_AUSD_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_USDC_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-4",
+              "name": "Phase 4",
+              "tentative": true,
+              "parameters_tbd": true,
+              "earliest_transition": "2026-09-24",
+              "transition_window_end": "2026-09-28",
+              "minimum_exposure_usd": 0,
+              "requirements": [
+                "Determine the long-term CRR.",
+                "Determine the long-term maximum exposure.",
+                "Confirm long-term rate limits. The source notes 25 million USD maximum and refill as a likely value, with 5 million USD for swaps, but does not approve these as final parameters."
+              ],
+              "rate_limit_targets": []
+            }
+          ]
+        },
+        {
+          "id": "grove-usds",
+          "name": "USDS mint / burn",
+          "facet": "USDSFacet",
+          "kind": "shared_route",
+          "rate_limit_metadata": [
+            {"label": "LIMIT_USDS_MINT", "decimals": 18},
+            {"label": "LIMIT_USDS_BURN", "decimals": 18}
+          ],
+          "sources": [
+            {
+              "label": "Controller supporting limits",
+              "url": "https://docs.google.com/document/d/1-Sb3-8927E7iigTKpAzMNKEBAb0jUmmeryqI3glxYRA/edit?tab=t.0",
+              "visibility": "restricted"
+            }
+          ],
+          "phases": [
+            {
+              "id": "initial-envelope",
+              "name": "Initial envelope",
+              "earliest_transition": "2026-06-22",
+              "minimum_exposure_usd": 0,
+              "rate_limit_targets": [
+                {"label": "LIMIT_USDS_MINT", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_USDS_BURN", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000}
+              ]
+            },
+            {
+              "id": "expanded-envelope",
+              "name": "Expanded envelope",
+              "tentative": true,
+              "earliest_transition": "2026-09-10",
+              "transition_window_end": "2026-09-14",
+              "minimum_exposure_usd": 0,
+              "rate_limit_targets": [
+                {"label": "LIMIT_USDS_MINT", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_USDS_BURN", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "grove-psm",
+          "name": "USDS / USDC swaps",
+          "facet": "PSMFacet",
+          "kind": "shared_route",
+          "sources": [
+            {
+              "label": "Controller supporting limits",
+              "url": "https://docs.google.com/document/d/1-Sb3-8927E7iigTKpAzMNKEBAb0jUmmeryqI3glxYRA/edit?tab=t.0",
+              "visibility": "restricted"
+            }
+          ],
+          "phases": [
+            {
+              "id": "initial-envelope",
+              "name": "Initial envelope",
+              "earliest_transition": "2026-06-22",
+              "minimum_exposure_usd": 0,
+              "rate_limit_targets": [
+                {"label": "LIMIT_USDS_TO_USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_USDC_TO_USDS", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000}
+              ]
+            },
+            {
+              "id": "expanded-envelope",
+              "name": "Expanded envelope",
+              "tentative": true,
+              "earliest_transition": "2026-09-10",
+              "transition_window_end": "2026-09-14",
+              "minimum_exposure_usd": 0,
+              "rate_limit_targets": [
+                {"label": "LIMIT_USDS_TO_USDC", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_USDC_TO_USDS", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000}
+              ]
+            }
+          ]
+        }
+      ],
+      "operator_programs": [
+        {
+          "id": "grove-basin-univ3-september-2026",
+          "name": "Basin JTRSY and UniV3 rate-limit ramp",
+          "description": "Daily Grove cBEAM instructions. Calls sharing a signing slot are one Safe transaction.",
+          "first_slot_utc": "2026-09-03T16:00:00Z",
+          "cadence_seconds": 86400,
+          "source": {
+            "label": "Rate-Limits Ramp-Up Plan: Basin JTRSY and UniV3",
+            "url": "https://docs.google.com/document/d/156sVGSirFuHXvHUWTPACxpIb4IMxJ-_Vn4EUzP5OAW8/edit?tab=t.0#heading=h.vmzmj2z40rf",
+            "visibility": "restricted"
+          },
+          "transition_overrides": [
+            {"track_id": "grove-basin-jtrsy", "from_phase_id": "phase-3", "to_phase_id": "phase-4"},
+            {"track_id": "grove-uniswap-v3", "from_phase_id": "phase-2", "to_phase_id": "phase-3"},
+            {"track_id": "grove-usds", "from_phase_id": "initial-envelope", "to_phase_id": "expanded-envelope"},
+            {"track_id": "grove-psm", "from_phase_id": "initial-envelope", "to_phase_id": "expanded-envelope"}
+          ],
+          "rate_limits": [
+            {
+              "track_id": "grove-basin-jtrsy",
+              "label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY",
+              "expected_key": "0x44ad4f925dffddd260f6ba5813208bf35b11b254e79611cbc8443c1504f68e68",
+              "decimals": 18,
+              "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
+              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD_AUSD-USDC",
+              "expected_key": "0x89c0cb8c17898781d7c1776eafcf73fd0b570659ad5c3791ddcbefe66b001541",
+              "decimals": 6,
+              "starting": {"max_amount": 5000000, "slope_per_day": 350000},
+              "target": {"max_amount": 5000000, "slope_per_day": 5000000}
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD-USDC",
+              "expected_key": "0xd3384d5424cd179640223010fed859f38b86b26e5e0b9ee88b87321b98882f57",
+              "decimals": 18,
+              "starting": {"max_amount": 5000000, "slope_per_day": 350000},
+              "target": {"max_amount": 5000000, "slope_per_day": 5000000}
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_DEPOSIT_USDC_AUSD-USDC",
+              "expected_key": "0x71efb11b03476e40dcc1ade629d360114fcbf838d70a3211270f69414ba9a187",
+              "decimals": 6,
+              "starting": {"max_amount": 5000000, "slope_per_day": 350000},
+              "target": {"max_amount": 5000000, "slope_per_day": 5000000}
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_SWAP_AUSD_AUSD-USDC",
+              "expected_key": "0x7dd93dac252469b97c259284118454a6a09efd0e5f781dec59acc240f8f88402",
+              "decimals": 6,
+              "starting": {"max_amount": 1000000, "slope_per_day": 5000000},
+              "target": {"max_amount": 5000000, "slope_per_day": 5000000}
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_SWAP_USDC_AUSD-USDC",
+              "expected_key": "0x6e850dcb18bea10055c82d1e3753f551b1228d04b81350ba117235de19f9a0da",
+              "decimals": 6,
+              "starting": {"max_amount": 1000000, "slope_per_day": 5000000},
+              "target": {"max_amount": 5000000, "slope_per_day": 5000000}
+            },
+            {
+              "track_id": "grove-psm",
+              "label": "LIMIT_USDC_TO_USDS",
+              "expected_key": "0x87835797fec2ad9575bc1a7035e3c27b8a8b7db2c3d7118513baf081b3af06b3",
+              "decimals": 6,
+              "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
+              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+            },
+            {
+              "track_id": "grove-usds",
+              "label": "LIMIT_USDS_BURN",
+              "expected_key": "0x844d35ae585cfdeed0a77b7724286a1d4b5718bf8663d85e55396062b1cbe38c",
+              "decimals": 18,
+              "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
+              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+            },
+            {
+              "track_id": "grove-usds",
+              "label": "LIMIT_USDS_MINT",
+              "expected_key": "0xcb0537d5e5dba65a8edbac12555995860e5b8e1b70996011edb1ca8173e56d3c",
+              "decimals": 18,
+              "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
+              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+            },
+            {
+              "track_id": "grove-psm",
+              "label": "LIMIT_USDS_TO_USDC",
+              "expected_key": "0x00d4cb8ac2838f11d95b0136a919a13b994f920024aba35eee16dc433c65851c",
+              "decimals": 6,
+              "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
+              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osero",
+      "name": "Osero",
+      "visible": false,
+      "tracks": [
+        {
+          "id": "osero-aave",
+          "name": "SparkLend spUSDS",
+          "facet": "AaveFacet",
+          "instance": "spUSDS",
+          "kind": "market",
+          "plan_note": "Dates are milestone-dependent and phases may be delayed if KPIs are not met or the spell schedule changes.",
+          "rate_limit_metadata": [
+            {"label": "LIMIT_AAVE_DEPOSIT", "decimals": 18}
+          ],
+          "exposure_source": {
+            "kind": "rrc_allocation",
+            "url": "https://sky.data.blockanalitica.com/internal/rrc/primes/osero/allocations/?limit=100",
+            "token_address": "0xc02ab1a5eaa8d1b114ef786d9bde108cd4364359",
+            "wallet_address": "0x6d370e359e9cbd0fd35bb38faf705d84238cb884"
+          },
+          "sources": [
+            {
+              "label": "Osero DPAU and AaveFacet ramp-up plan",
+              "visibility": "restricted"
+            }
+          ],
+          "phases": [
+            {
+              "id": "phase-1",
+              "name": "Phase 1",
+              "earliest_transition": "2026-07-16",
+              "minimum_exposure_usd": 1000000,
+              "minimum_rrc_usd": 1000000,
+              "reference_example": {"exposure_usd": 4000000, "rrc_usd": 4000000},
+              "minimum_exposure_days": 14,
+              "minimum_phase_days": 28,
+              "absolute_minimum_days": 10,
+              "requirements": [
+                "Complete the Prime's approved AaveFacet Lindy KPI plan under Core Council supervision.",
+                "The plan must identify material capital-moving operations and branches, exposure-building operations, transaction amounts, expected onchain evidence, and pre-flight-only checks.",
+                "Use normal production permissions for live Lindy actions; configuration-only and expected-revert checks may be evidenced through deployment checks, tests, forks, or simulations.",
+                "Dewiz and Sidestream review technical completeness; BA Labs verifies consistency with phase parameters and tracks completion onchain.",
+                "Maintain at least 1 million USD of exposure for at least 14 days and remain in Phase 1 for four weeks due to spell scheduling."
+              ],
+              "dc_iam": {"duty": 0, "max_line_usd": 5000000, "gap_usd": 1000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 100, "maximum_exposure_usd": 5000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_AAVE_DEPOSIT", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_AAVE_WITHDRAW", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-2",
+              "name": "Phase 2",
+              "earliest_transition": "2026-08-13",
+              "minimum_exposure_usd": 4000000,
+              "minimum_rrc_usd": 1000000,
+              "reference_example": {"exposure_usd": 10000000, "rrc_usd": 2500000},
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 10000000, "gap_usd": 2000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 25, "maximum_exposure_usd": 5000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_AAVE_DEPOSIT", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_AAVE_WITHDRAW", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-3",
+              "name": "Phase 3",
+              "tentative": true,
+              "earliest_transition": "2026-08-27",
+              "minimum_exposure_usd": 10000000,
+              "minimum_rrc_usd": 1000000,
+              "reference_example": {"exposure_usd": 20000000, "rrc_usd": 2000000},
+              "minimum_exposure_days": 14,
+              "dc_iam": {"duty": 0, "max_line_usd": 25000000, "gap_usd": 5000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 10, "maximum_exposure_usd": 25000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_AAVE_DEPOSIT", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_AAVE_WITHDRAW", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-4",
+              "name": "Phase 4",
+              "tentative": true,
+              "earliest_transition": "2026-09-10",
+              "minimum_exposure_usd": 50000000,
+              "minimum_rrc_usd": 3300000,
+              "reference_example": {"exposure_usd": 80000000, "rrc_usd": 4000000},
+              "minimum_exposure_days": 14,
+              "absolute_minimum_days": 10,
+              "requirements": [
+                "Supply the required exposure as soon as possible and maintain it until the next spell, with an absolute minimum of 10 days."
+              ],
+              "dc_iam": {"duty": 0, "max_line_usd": 100000000, "gap_usd": 15000000, "ttl_seconds": 86400},
+              "offchain": {"crr_percent": 5, "maximum_exposure_usd": 100000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_AAVE_DEPOSIT", "max_amount_usd": 15000000, "slope_per_day_usd": 15000000},
+                {"label": "LIMIT_AAVE_WITHDRAW", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-5",
+              "name": "Phase 5",
+              "tentative": true,
+              "earliest_transition": "2026-09-24",
+              "transition_window_end": "2026-09-28",
+              "minimum_exposure_usd": 150000000,
+              "minimum_exposure_days": 14,
+              "absolute_minimum_days": 10,
+              "requirements": [
+                "Supply the required exposure as soon as possible and maintain it until the next spell, with an absolute minimum of 10 days."
+              ],
+              "dc_iam": {"duty": 0, "max_line_usd": 200000000, "gap_usd": 50000000, "ttl_seconds": 86400},
+              "offchain": {"crr_basis": "SparkLend CRR", "maximum_exposure_usd": 200000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_AAVE_DEPOSIT", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_AAVE_WITHDRAW", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-6",
+              "name": "Phase 6",
+              "parameters_tbd": true,
+              "minimum_exposure_usd": 0,
+              "requirements": ["Phase 6 date and parameters remain to be determined."],
+              "rate_limit_targets": []
+            }
+          ]
+        },
+        {
+          "id": "osero-usds",
+          "name": "USDS mint / burn",
+          "facet": "USDSFacet",
+          "kind": "shared_route",
+          "rate_limit_metadata": [
+            {"label": "LIMIT_USDS_MINT", "decimals": 18},
+            {"label": "LIMIT_USDS_BURN", "decimals": 18}
+          ],
+          "sources": [
+            {
+              "label": "Osero controller supporting limits",
+              "visibility": "restricted"
+            }
+          ],
+          "phases": [
+            {
+              "id": "initial-envelope",
+              "name": "Initial envelope",
+              "earliest_transition": "2026-07-16",
+              "minimum_exposure_usd": 0,
+              "rate_limit_targets": [
+                {"label": "LIMIT_USDS_MINT", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
+                {"label": "LIMIT_USDS_BURN", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000}
+              ]
+            },
+            {
+              "id": "phase-4-envelope",
+              "name": "Phase 4 envelope",
+              "tentative": true,
+              "earliest_transition": "2026-09-10",
+              "minimum_exposure_usd": 0,
+              "rate_limit_targets": [
+                {"label": "LIMIT_USDS_MINT", "max_amount_usd": 15000000, "slope_per_day_usd": 15000000},
+                {"label": "LIMIT_USDS_BURN", "max_amount_usd": 15000000, "slope_per_day_usd": 15000000}
+              ]
+            },
+            {
+              "id": "long-term-envelope",
+              "name": "Long-term envelope",
+              "tentative": true,
+              "earliest_transition": "2026-09-24",
+              "transition_window_end": "2026-09-28",
+              "minimum_exposure_usd": 0,
+              "rate_limit_targets": [
+                {"label": "LIMIT_USDS_MINT", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_USDS_BURN", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

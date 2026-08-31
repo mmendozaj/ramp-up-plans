@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "updated_at_utc": "2026-08-28T00:00:00Z",
+  "tracks": {
+    "grove-basin-jtrsy": {
+      "status": "eligible",
+      "status_label": "Eligible for Phase 3",
+      "status_detail": "Phase 2 exposure was confirmed, subject to remaining in place through execution.",
+      "current_phase_id": "phase-2",
+      "target_phase_id": "phase-3",
+      "phase_activations": {
+        "phase-2": {
+          "source": "BA Labs public phase confirmation"
+        },
+        "phase-3": {
+          "expected_execution_utc": "2026-08-31",
+          "source": "August 27 spell schedule"
+        }
+      },
+      "operator_changes_authorized": false,
+      "operator_note": "No DPAU rate-limit change is required between Phases 2 and 3. The DC-IAM and offchain parameter changes use their own governance paths.",
+      "exposure": {
+        "observed_usd": 4000000,
+        "observed_at_utc": "2026-08-21T07:52:17Z",
+        "requirement_verified": true,
+        "source": "BA Labs public phase confirmation"
+      },
+      "qualitative_kpis": []
+    },
+    "grove-basin-buidl": {
+      "status": "paused",
+      "status_label": "Paused",
+      "status_detail": "A required prerequisite has not been confirmed.",
+      "pause_reason": "The required legal documentation has not been confirmed as signed.",
+      "current_phase_id": "phase-1",
+      "target_phase_id": null,
+      "phase_activations": {
+        "phase-1": {
+          "source": "Team status update"
+        }
+      },
+      "operator_changes_authorized": false,
+      "operator_note": "Do not raise rate limits while the instance is paused.",
+      "exposure": {
+        "observed_usd": 0,
+        "observed_at_utc": null,
+        "requirement_verified": false,
+        "source": "Team status update"
+      },
+      "qualitative_kpis": [
+        {
+          "id": "required-prerequisite",
+          "label": "Required onboarding prerequisite confirmed",
+          "required": true,
+          "status": "missing",
+          "evidence_url": null
+        }
+      ]
+    },
+    "grove-uniswap-v3": {
+      "status": "eligible",
+      "status_label": "Eligible for Phase 2",
+      "status_detail": "Phase 1 operational KPIs and the minimum exposure were publicly confirmed.",
+      "current_phase_id": "phase-1",
+      "target_phase_id": "phase-2",
+      "target_date_utc": "2026-08-31T00:00:00Z",
+      "phase_activations": {
+        "phase-1": {
+          "source": "BA Labs public phase confirmation"
+        },
+        "phase-2": {
+          "expected_execution_utc": "2026-08-31",
+          "source": "August 27 spell schedule"
+        }
+      },
+      "operator_changes_authorized": false,
+      "operator_note": "The Phase 2 slope change is scheduled through the August 27 spell. Do not duplicate it through cBEAM.",
+      "exposure": {
+        "observed_usd": 1000000,
+        "observed_at_utc": "2026-08-21T07:52:17Z",
+        "requirement_verified": true,
+        "source": "BA Labs public phase confirmation"
+      },
+      "qualitative_kpis": [
+        {"id": "swap-directions", "label": "Both enabled swap directions exercised", "required": true, "status": "complete"},
+        {"id": "initial-position", "label": "Initial Uniswap position created", "required": true, "status": "complete"},
+        {"id": "partial-removal", "label": "Bounded partial liquidity removal completed", "required": true, "status": "complete"},
+        {"id": "complete-exit", "label": "Complete exit path completed", "required": true, "status": "complete"},
+        {"id": "exposure-restored", "label": "Required exposure restored", "required": true, "status": "complete"}
+      ]
+    },
+    "grove-usds": {
+      "status": "active",
+      "status_label": "Initial envelope active",
+      "status_detail": "Shared controller route used by multiple Grove allocation paths.",
+      "current_phase_id": "initial-envelope",
+      "target_phase_id": null,
+      "operator_changes_authorized": false,
+      "operator_note": "No change is authorized. A future increase must account for every route that can consume this shared capacity.",
+      "exposure": {"observed_usd": 0, "requirement_verified": true, "source": "Not an exposure-gated track"},
+      "qualitative_kpis": []
+    },
+    "grove-psm": {
+      "status": "active",
+      "status_label": "Initial envelope active",
+      "status_detail": "Shared controller route used by multiple Grove allocation paths.",
+      "current_phase_id": "initial-envelope",
+      "target_phase_id": null,
+      "operator_changes_authorized": false,
+      "operator_note": "No change is authorized. A future increase must account for every route that can consume this shared capacity.",
+      "exposure": {"observed_usd": 0, "requirement_verified": true, "source": "Not an exposure-gated track"},
+      "qualitative_kpis": []
+    },
+    "osero-aave": {
+      "status": "needs_confirmation",
+      "status_label": "Current phase not confirmed",
+      "status_detail": "The live 5 million limits are compatible with Phases 1 through 3 and therefore do not identify the approved phase.",
+      "current_phase_id": null,
+      "target_phase_id": null,
+      "operator_changes_authorized": false,
+      "operator_note": "Confirm Osero's current approved phase and KPI evidence before producing operator changes.",
+      "exposure": {
+        "observed_usd": 0,
+        "observed_at_utc": null,
+        "requirement_verified": false,
+        "source": "No authoritative live phase attestation configured"
+      },
+      "qualitative_kpis": [
+        {"id": "phase-confirmation", "label": "Current phase confirmed by the responsible reviewer", "required": true, "status": "missing"}
+      ]
+    },
+    "osero-usds": {
+      "status": "review_required",
+      "status_label": "Plan mismatch requires review",
+      "status_detail": "The plan describes bounded mint and burn limits, while the current burn key is unlimited.",
+      "current_phase_id": "initial-envelope",
+      "target_phase_id": null,
+      "operator_changes_authorized": false,
+      "operator_note": "Do not change the burn limit until the intended configuration is confirmed.",
+      "exposure": {"observed_usd": 0, "requirement_verified": true, "source": "Not an exposure-gated track"},
+      "qualitative_kpis": [
+        {"id": "burn-limit-review", "label": "Intended USDS burn limit confirmed", "required": true, "status": "missing"}
+      ]
+    }
+  },
+  "programs": {
+    "grove-basin-univ3-september-2026": {
+      "status": "planned",
+      "status_label": "Waiting for launch prerequisites",
+      "operator_changes_authorized": false,
+      "operator_note": "Wait for the required snapshot vote, the post-spell starting values, and live PAS registration before signing the first cBEAM batch."
+    }
+  }
+}
