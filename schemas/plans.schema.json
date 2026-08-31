@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ba-labs.example/schemas/ramp-up-plans.json",
+  "$id": "urn:ba-labs:ramp-up-plans:v1",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "version", "policy_defaults", "primes"],

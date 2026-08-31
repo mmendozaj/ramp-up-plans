@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ba-labs.example/schemas/ramp-up-attestations.json",
+  "$id": "urn:ba-labs:ramp-up-attestations:v1",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "updated_at_utc", "tracks", "programs"],
