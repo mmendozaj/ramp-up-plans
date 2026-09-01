@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at_utc": "2026-08-28T00:00:00Z",
+  "updated_at_utc": "2026-09-01T00:00:00Z",
   "tracks": {
     "grove-basin-jtrsy": {
       "status": "eligible",
@@ -14,7 +14,18 @@
         },
         "phase-3": {
           "expected_execution_utc": "2026-08-31",
-          "source": "August 27 spell schedule"
+          "source": "August 27 spell schedule",
+          "onchain_trigger": {
+            "source": "August 27 spell PAS launch event",
+            "event_name": "SetHop",
+            "source_address": "0x1A1879E66547F90bfF87D45A5b0335950E019E02",
+            "not_before_utc": "2026-08-31T00:00:00Z",
+            "not_after_utc": "2026-09-01T00:00:00Z",
+            "details": {
+              "rate_limits": "0x0000000000000000000000000000000000000000",
+              "value": 57600
+            }
+          }
         }
       },
       "operator_changes_authorized": false,
@@ -70,7 +81,18 @@
         },
         "phase-2": {
           "expected_execution_utc": "2026-08-31",
-          "source": "August 27 spell schedule"
+          "source": "August 27 spell schedule",
+          "onchain_trigger": {
+            "source": "August 27 spell PAS launch event",
+            "event_name": "SetHop",
+            "source_address": "0x1A1879E66547F90bfF87D45A5b0335950E019E02",
+            "not_before_utc": "2026-08-31T00:00:00Z",
+            "not_after_utc": "2026-09-01T00:00:00Z",
+            "details": {
+              "rate_limits": "0x0000000000000000000000000000000000000000",
+              "value": 57600
+            }
+          }
         }
       },
       "operator_changes_authorized": false,

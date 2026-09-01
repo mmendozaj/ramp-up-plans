@@ -28,8 +28,11 @@ it in the data.
 2. Add or update the source reference for every substantive plan change.
 3. Use the phase-body text when it explicitly corrects a source document's
    summary table. Otherwise preserve the documented table value.
-4. Never infer that a phase is active from a planned date. Record an
-   `executed_at_utc` value only when execution is confirmed.
+4. Never infer that a phase is active from a planned date. When the activation
+   has an objective onchain marker, configure an `onchain_trigger` so the
+   dashboard can obtain the block timestamp automatically. Record an
+   `executed_at_utc` value manually only when execution is confirmed and no
+   reliable automatic trigger is available.
 5. Keep `expected_execution_utc` separate from `executed_at_utc`. Do not assume
    a universal delay between a spell date and its execution date.
 6. Do not mark a qualitative KPI complete without evidence from the responsible
@@ -56,6 +59,9 @@ decimals and per-second slope arithmetic.
   observation, pause reason, or operator authorization belongs in
   `attestations/attestations.json`.
 - A planned date is not an attestation.
+- An `onchain_trigger` must identify a reviewed transaction or a sufficiently
+  specific event, contract, detail set, and time window. Do not use a date by
+  itself as an activation trigger.
 - Onchain configuration is not evidence that a qualitative KPI or legal
   prerequisite was completed.
 

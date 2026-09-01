@@ -143,6 +143,21 @@ function semanticValidation(plans, attestations) {
           fail(`${at}.phase_activations.${phaseId}.${field}`, "is not a valid date");
         }
       }
+      const trigger = activation.onchain_trigger;
+      if (trigger) {
+        if (!trigger.transaction_hash && !trigger.event_name) {
+          fail(`${at}.phase_activations.${phaseId}.onchain_trigger`, "requires transaction_hash or event_name");
+        }
+        for (const field of ["not_before_utc", "not_after_utc"]) {
+          if (trigger[field] && !validDate(trigger[field])) {
+            fail(`${at}.phase_activations.${phaseId}.onchain_trigger.${field}`, "is not a valid date");
+          }
+        }
+        if (trigger.not_before_utc && trigger.not_after_utc
+          && new Date(trigger.not_after_utc) < new Date(trigger.not_before_utc)) {
+          fail(`${at}.phase_activations.${phaseId}.onchain_trigger`, "not_after_utc precedes not_before_utc");
+        }
+      }
       if ((activation.expected_execution_utc || activation.executed_at_utc) && !activation.source) {
         fail(`${at}.phase_activations.${phaseId}.source`, "is required when an execution date is recorded");
       }
