@@ -49,7 +49,7 @@ back to the bundled configuration otherwise.
 - `executed_at_utc` is reserved for confirmed execution.
 - Operator authorization and qualitative KPI completion are explicit
   attestations.
-- Osero remains configured with `visible: false` and can be shown by changing
-  that field to `true`.
+- Osero is visible in the dashboard; visibility does not imply phase approval
+  or completed PAS onboarding.
 - Generated files include the source commit so operators can identify exactly
   which reviewed version they are reading.

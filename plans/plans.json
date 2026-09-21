@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-08-28.3",
+  "version": "2026-09-21.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -544,7 +544,7 @@
     {
       "id": "osero",
       "name": "Osero",
-      "visible": false,
+      "visible": true,
       "tracks": [
         {
           "id": "osero-aave",
