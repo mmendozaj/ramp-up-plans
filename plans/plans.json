@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-09-21.1",
+  "version": "2026-09-21.2",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -17,7 +17,7 @@
           "facet": "BasinFacet",
           "instance": "JTRSY Grove Basin",
           "kind": "instance",
-          "plan_note": "Dates are milestone-dependent and phases may be delayed if KPIs are not met or the spell schedule changes.",
+          "plan_note": "September 3 and September 17 governance-approved key targets are shown in the explicit programs. Historical phase requirements are retained; the approved phase and exposure/CRR requirements need reconciliation before further dashboard authorization.",
           "rate_limit_metadata": [
             {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "decimals": 18}
           ],
@@ -36,6 +36,11 @@
             {
               "label": "Grove August 27 governance thread",
               "url": "https://forum.skyeco.com/t/august-27-2026-proposed-changes-to-grove-for-upcoming-spell/28164/7",
+              "visibility": "public"
+            },
+            {
+              "label": "Grove cBEAM approved targets and execution record \u2014 September 3\u201318, 2026",
+              "url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216",
               "visibility": "public"
             }
           ],
@@ -236,7 +241,7 @@
           "facet": "UniswapV3Facet",
           "instance": "AUSD-USDC",
           "kind": "pool",
-          "plan_note": "Dates are milestone-dependent and phases may be delayed if KPIs are not met or the spell schedule changes.",
+          "plan_note": "September 3 and September 17 governance-approved key targets are shown in the explicit programs. Historical phase requirements are retained; the approved phase and exposure/CRR requirements need reconciliation before further dashboard authorization.",
           "exposure_source": {
             "kind": "rrc_allocation",
             "url": "https://sky.data.blockanalitica.com/internal/rrc/primes/grove/allocations/?limit=100",
@@ -252,6 +257,11 @@
             {
               "label": "Grove August 27 governance thread",
               "url": "https://forum.skyeco.com/t/august-27-2026-proposed-changes-to-grove-for-upcoming-spell/28164/7",
+              "visibility": "public"
+            },
+            {
+              "label": "Grove cBEAM approved targets and execution record \u2014 September 3\u201318, 2026",
+              "url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216",
               "visibility": "public"
             }
           ],
@@ -373,6 +383,11 @@
               "label": "Controller supporting limits",
               "url": "https://docs.google.com/document/d/1-Sb3-8927E7iigTKpAzMNKEBAb0jUmmeryqI3glxYRA/edit?tab=t.0",
               "visibility": "restricted"
+            },
+            {
+              "label": "Grove cBEAM approved targets and execution record \u2014 September 3\u201318, 2026",
+              "url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216",
+              "visibility": "public"
             }
           ],
           "phases": [
@@ -398,7 +413,8 @@
                 {"label": "LIMIT_USDS_BURN", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000}
               ]
             }
-          ]
+          ],
+          "plan_note": "September 3 and September 17 governance-approved key targets are shown in the explicit programs. Historical phase requirements are retained; the approved phase and exposure/CRR requirements need reconciliation before further dashboard authorization."
         },
         {
           "id": "grove-psm",
@@ -410,6 +426,11 @@
               "label": "Controller supporting limits",
               "url": "https://docs.google.com/document/d/1-Sb3-8927E7iigTKpAzMNKEBAb0jUmmeryqI3glxYRA/edit?tab=t.0",
               "visibility": "restricted"
+            },
+            {
+              "label": "Grove cBEAM approved targets and execution record \u2014 September 3\u201318, 2026",
+              "url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216",
+              "visibility": "public"
             }
           ],
           "phases": [
@@ -435,20 +456,21 @@
                 {"label": "LIMIT_USDC_TO_USDS", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000}
               ]
             }
-          ]
+          ],
+          "plan_note": "September 3 and September 17 governance-approved key targets are shown in the explicit programs. Historical phase requirements are retained; the approved phase and exposure/CRR requirements need reconciliation before further dashboard authorization."
         }
       ],
       "operator_programs": [
         {
           "id": "grove-basin-univ3-september-2026",
-          "name": "Basin JTRSY and UniV3 rate-limit ramp",
-          "description": "Daily Grove cBEAM instructions. Calls sharing a signing slot are one Safe transaction.",
+          "name": "Grove Target 1 \u2014 approved September 3",
+          "description": "September 3 approved targets. Dates are an illustrative 24-hour schedule, not transaction execution timestamps. Live threshold completion is not a count of executed transactions. The September 17 Target 2 is shown separately.",
           "first_slot_utc": "2026-09-03T16:00:00Z",
           "cadence_seconds": 86400,
           "source": {
-            "label": "Rate-Limits Ramp-Up Plan: Basin JTRSY and UniV3",
-            "url": "https://docs.google.com/document/d/156sVGSirFuHXvHUWTPACxpIb4IMxJ-_Vn4EUzP5OAW8/edit?tab=t.0#heading=h.vmzmj2z40rf",
-            "visibility": "restricted"
+            "label": "Grove cBEAM approved targets and execution record \u2014 September 3\u201318, 2026",
+            "url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216/2",
+            "visibility": "public"
           },
           "transition_overrides": [
             {"track_id": "grove-basin-jtrsy", "from_phase_id": "phase-3", "to_phase_id": "phase-4"},
@@ -463,7 +485,10 @@
               "expected_key": "0x44ad4f925dffddd260f6ba5813208bf35b11b254e79611cbc8443c1504f68e68",
               "decimals": 18,
               "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
-              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+              "target": {
+                "max_amount": 15000000,
+                "slope_per_day": 15000000
+              }
             },
             {
               "track_id": "grove-uniswap-v3",
@@ -511,7 +536,10 @@
               "expected_key": "0x87835797fec2ad9575bc1a7035e3c27b8a8b7db2c3d7118513baf081b3af06b3",
               "decimals": 6,
               "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
-              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+              "target": {
+                "max_amount": 15000000,
+                "slope_per_day": 30000000
+              }
             },
             {
               "track_id": "grove-usds",
@@ -519,7 +547,10 @@
               "expected_key": "0x844d35ae585cfdeed0a77b7724286a1d4b5718bf8663d85e55396062b1cbe38c",
               "decimals": 18,
               "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
-              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+              "target": {
+                "max_amount": 15000000,
+                "slope_per_day": 30000000
+              }
             },
             {
               "track_id": "grove-usds",
@@ -527,7 +558,10 @@
               "expected_key": "0xcb0537d5e5dba65a8edbac12555995860e5b8e1b70996011edb1ca8173e56d3c",
               "decimals": 18,
               "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
-              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+              "target": {
+                "max_amount": 15000000,
+                "slope_per_day": 30000000
+              }
             },
             {
               "track_id": "grove-psm",
@@ -535,7 +569,158 @@
               "expected_key": "0x00d4cb8ac2838f11d95b0136a919a13b994f920024aba35eee16dc433c65851c",
               "decimals": 6,
               "starting": {"max_amount": 5000000, "slope_per_day": 5000000},
-              "target": {"max_amount": 50000000, "slope_per_day": 50000000}
+              "target": {
+                "max_amount": 15000000,
+                "slope_per_day": 30000000
+              }
+            }
+          ]
+        },
+        {
+          "id": "grove-cbeam-target-2-september-2026",
+          "name": "Grove Target 2 \u2014 approved September 17",
+          "description": "September 17 approved targets, anchored to the first observed Target 2 transaction. Dates are illustrative at 24-hour cadence. Uniswap deposit slopes are still completing Target 1; this combined Target 2 schedule waits for every starting value and is not an execution-history view.",
+          "first_slot_utc": "2026-09-17T18:24:35Z",
+          "cadence_seconds": 86400,
+          "source": {
+            "label": "Grove cBEAM approved targets and execution record \u2014 September 3\u201318, 2026",
+            "url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216/14",
+            "visibility": "public"
+          },
+          "transition_overrides": [
+            {
+              "track_id": "grove-basin-jtrsy",
+              "from_phase_id": "phase-3",
+              "to_phase_id": "phase-4"
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "from_phase_id": "phase-2",
+              "to_phase_id": "phase-3"
+            },
+            {
+              "track_id": "grove-usds",
+              "from_phase_id": "initial-envelope",
+              "to_phase_id": "expanded-envelope"
+            },
+            {
+              "track_id": "grove-psm",
+              "from_phase_id": "initial-envelope",
+              "to_phase_id": "expanded-envelope"
+            }
+          ],
+          "rate_limits": [
+            {
+              "track_id": "grove-basin-jtrsy",
+              "label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY",
+              "expected_key": "0x44ad4f925dffddd260f6ba5813208bf35b11b254e79611cbc8443c1504f68e68",
+              "decimals": 18,
+              "starting": {
+                "max_amount": 15000000,
+                "slope_per_day": 15000000
+              },
+              "target": {
+                "max_amount": 50000000,
+                "slope_per_day": 50000000
+              }
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD_AUSD-USDC",
+              "expected_key": "0x89c0cb8c17898781d7c1776eafcf73fd0b570659ad5c3791ddcbefe66b001541",
+              "decimals": 6,
+              "starting": {
+                "max_amount": 5000000,
+                "slope_per_day": 5000000
+              },
+              "target": {
+                "max_amount": 5000000,
+                "slope_per_day": 25000000
+              }
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD-USDC",
+              "expected_key": "0xd3384d5424cd179640223010fed859f38b86b26e5e0b9ee88b87321b98882f57",
+              "decimals": 18,
+              "starting": {
+                "max_amount": 5000000,
+                "slope_per_day": 5000000
+              },
+              "target": {
+                "max_amount": 5000000,
+                "slope_per_day": 25000000
+              }
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_DEPOSIT_USDC_AUSD-USDC",
+              "expected_key": "0x71efb11b03476e40dcc1ade629d360114fcbf838d70a3211270f69414ba9a187",
+              "decimals": 6,
+              "starting": {
+                "max_amount": 5000000,
+                "slope_per_day": 5000000
+              },
+              "target": {
+                "max_amount": 5000000,
+                "slope_per_day": 25000000
+              }
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_SWAP_AUSD_AUSD-USDC",
+              "expected_key": "0x7dd93dac252469b97c259284118454a6a09efd0e5f781dec59acc240f8f88402",
+              "decimals": 6,
+              "starting": {
+                "max_amount": 5000000,
+                "slope_per_day": 5000000
+              },
+              "target": {
+                "max_amount": 5000000,
+                "slope_per_day": 25000000
+              }
+            },
+            {
+              "track_id": "grove-uniswap-v3",
+              "label": "LIMIT_UNISWAP_V3_SWAP_USDC_AUSD-USDC",
+              "expected_key": "0x6e850dcb18bea10055c82d1e3753f551b1228d04b81350ba117235de19f9a0da",
+              "decimals": 6,
+              "starting": {
+                "max_amount": 5000000,
+                "slope_per_day": 5000000
+              },
+              "target": {
+                "max_amount": 5000000,
+                "slope_per_day": 25000000
+              }
+            },
+            {
+              "track_id": "grove-usds",
+              "label": "LIMIT_USDS_MINT",
+              "expected_key": "0xcb0537d5e5dba65a8edbac12555995860e5b8e1b70996011edb1ca8173e56d3c",
+              "decimals": 18,
+              "starting": {
+                "max_amount": 15000000,
+                "slope_per_day": 30000000
+              },
+              "target": {
+                "max_amount": 50000000,
+                "slope_per_day": 50000000
+              }
+            },
+            {
+              "track_id": "grove-psm",
+              "label": "LIMIT_USDS_TO_USDC",
+              "expected_key": "0x00d4cb8ac2838f11d95b0136a919a13b994f920024aba35eee16dc433c65851c",
+              "decimals": 6,
+              "starting": {
+                "max_amount": 15000000,
+                "slope_per_day": 30000000
+              },
+              "target": {
+                "max_amount": 50000000,
+                "slope_per_day": 50000000
+              }
             }
           ]
         }
@@ -552,7 +737,7 @@
           "facet": "AaveFacet",
           "instance": "spUSDS",
           "kind": "market",
-          "plan_note": "Dates are milestone-dependent and phases may be delayed if KPIs are not met or the spell schedule changes.",
+          "plan_note": "September 24 proposals cover PAS authorization, cBEAM registration/pairing, and 50M USDS mint/deposit limits. No execution observed as of September 21. Historical intermediate phases are retained for review and do not attest activation.",
           "rate_limit_metadata": [
             {"label": "LIMIT_AAVE_DEPOSIT", "decimals": 18}
           ],
@@ -566,6 +751,16 @@
             {
               "label": "Osero DPAU and AaveFacet ramp-up plan",
               "visibility": "restricted"
+            },
+            {
+              "label": "Osero September 24 proposed PAU authorization and limit increases",
+              "url": "https://forum.skyeco.com/t/september-24-2026-proposed-changes-to-osero-for-upcoming-spell/28224",
+              "visibility": "public"
+            },
+            {
+              "label": "Osero cBEAM activation scope and September 18 BA Labs recommendation",
+              "url": "https://forum.skyeco.com/t/technical-scope-of-the-oseros-cbeam-activation/28239",
+              "visibility": "public"
             }
           ],
           "phases": [
@@ -686,6 +881,16 @@
             {
               "label": "Osero controller supporting limits",
               "visibility": "restricted"
+            },
+            {
+              "label": "Osero September 24 proposed PAU authorization and limit increases",
+              "url": "https://forum.skyeco.com/t/september-24-2026-proposed-changes-to-osero-for-upcoming-spell/28224",
+              "visibility": "public"
+            },
+            {
+              "label": "Osero cBEAM activation scope and September 18 BA Labs recommendation",
+              "url": "https://forum.skyeco.com/t/technical-scope-of-the-oseros-cbeam-activation/28239",
+              "visibility": "public"
             }
           ],
           "phases": [
@@ -696,7 +901,11 @@
               "minimum_exposure_usd": 0,
               "rate_limit_targets": [
                 {"label": "LIMIT_USDS_MINT", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
-                {"label": "LIMIT_USDS_BURN", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000}
+                {
+                  "label": "LIMIT_USDS_BURN",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             },
             {
@@ -707,7 +916,11 @@
               "minimum_exposure_usd": 0,
               "rate_limit_targets": [
                 {"label": "LIMIT_USDS_MINT", "max_amount_usd": 15000000, "slope_per_day_usd": 15000000},
-                {"label": "LIMIT_USDS_BURN", "max_amount_usd": 15000000, "slope_per_day_usd": 15000000}
+                {
+                  "label": "LIMIT_USDS_BURN",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             },
             {
@@ -719,10 +932,15 @@
               "minimum_exposure_usd": 0,
               "rate_limit_targets": [
                 {"label": "LIMIT_USDS_MINT", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
-                {"label": "LIMIT_USDS_BURN", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000}
+                {
+                  "label": "LIMIT_USDS_BURN",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             }
-          ]
+          ],
+          "plan_note": "September 24 proposals cover PAS authorization, cBEAM registration/pairing, and 50M USDS mint/deposit limits. No execution observed as of September 21. Historical intermediate phases are retained for review and do not attest activation."
         }
       ]
     }

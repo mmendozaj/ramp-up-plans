@@ -1,11 +1,11 @@
 {
   "schema_version": 2,
-  "updated_at_utc": "2026-09-01T00:00:00Z",
+  "updated_at_utc": "2026-09-21T09:35:04Z",
   "tracks": {
     "grove-basin-jtrsy": {
-      "status": "eligible",
-      "status_label": "Eligible for Phase 3",
-      "status_detail": "Phase 2 exposure was confirmed, subject to remaining in place through execution.",
+      "status": "review_required",
+      "status_label": "Onchain ramp observed; phase review required",
+      "status_detail": "Twelve Grove cBEAM transactions were observed September 3\u201318. Approved key targets changed September 3 and September 17; the historical phase classification has not been re-attested.",
       "current_phase_id": "phase-2",
       "target_phase_id": "phase-3",
       "phase_activations": {
@@ -29,7 +29,7 @@
         }
       },
       "operator_changes_authorized": false,
-      "operator_note": "No DPAU rate-limit change is required between Phases 2 and 3. The DC-IAM and offchain parameter changes use their own governance paths.",
+      "operator_note": "Use the separately sourced Target 1 and Target 2 programs for approved key targets. Reconcile the current phase, exposure and CRR requirements before authorizing new dashboard instructions. Execution evidence: https://forum.skyeco.com/t/grove-cbeam-configuration/28216/16",
       "exposure": {
         "observed_usd": 4000000,
         "observed_at_utc": "2026-08-21T07:52:17Z",
@@ -69,9 +69,9 @@
       ]
     },
     "grove-uniswap-v3": {
-      "status": "eligible",
-      "status_label": "Eligible for Phase 2",
-      "status_detail": "Phase 1 operational KPIs and the minimum exposure were publicly confirmed.",
+      "status": "review_required",
+      "status_label": "Onchain ramp observed; phase review required",
+      "status_detail": "Twelve Grove cBEAM transactions were observed September 3\u201318. Approved key targets changed September 3 and September 17; the historical phase classification has not been re-attested.",
       "current_phase_id": "phase-1",
       "target_phase_id": "phase-2",
       "target_date_utc": "2026-08-31T00:00:00Z",
@@ -81,22 +81,12 @@
         },
         "phase-2": {
           "expected_execution_utc": "2026-08-31",
-          "source": "August 27 spell schedule",
-          "onchain_trigger": {
-            "source": "August 27 spell PAS launch event",
-            "event_name": "SetHop",
-            "source_address": "0x1A1879E66547F90bfF87D45A5b0335950E019E02",
-            "not_before_utc": "2026-08-31T00:00:00Z",
-            "not_after_utc": "2026-09-01T00:00:00Z",
-            "details": {
-              "rate_limits": "0x0000000000000000000000000000000000000000",
-              "value": 57600
-            }
-          }
+          "source": "https://etherscan.io/tx/0x14e1678e7a9b28bb99373e5590e649c23cd9cf26bebb988e211521288e7fa2cf",
+          "executed_at_utc": "2026-08-31T14:11:35Z"
         }
       },
       "operator_changes_authorized": false,
-      "operator_note": "The Phase 2 slope change is scheduled through the August 27 spell. Do not duplicate it through cBEAM.",
+      "operator_note": "Use the separately sourced Target 1 and Target 2 programs for approved key targets. Reconcile the current phase, exposure and CRR requirements before authorizing new dashboard instructions. Execution evidence: https://forum.skyeco.com/t/grove-cbeam-configuration/28216/16",
       "exposure": {
         "observed_usd": 1000000,
         "observed_at_utc": "2026-08-21T07:52:17Z",
@@ -112,24 +102,24 @@
       ]
     },
     "grove-usds": {
-      "status": "active",
-      "status_label": "Initial envelope active",
-      "status_detail": "Shared controller route used by multiple Grove allocation paths.",
+      "status": "review_required",
+      "status_label": "Onchain ramp observed; phase review required",
+      "status_detail": "Twelve Grove cBEAM transactions were observed September 3\u201318. Approved key targets changed September 3 and September 17; the historical phase classification has not been re-attested.",
       "current_phase_id": "initial-envelope",
       "target_phase_id": null,
       "operator_changes_authorized": false,
-      "operator_note": "No change is authorized. A future increase must account for every route that can consume this shared capacity.",
+      "operator_note": "Use the separately sourced Target 1 and Target 2 programs for approved key targets. Reconcile the current phase, exposure and CRR requirements before authorizing new dashboard instructions. Execution evidence: https://forum.skyeco.com/t/grove-cbeam-configuration/28216/16",
       "exposure": {"observed_usd": 0, "requirement_verified": true, "source": "Not an exposure-gated track"},
       "qualitative_kpis": []
     },
     "grove-psm": {
-      "status": "active",
-      "status_label": "Initial envelope active",
-      "status_detail": "Shared controller route used by multiple Grove allocation paths.",
+      "status": "review_required",
+      "status_label": "Onchain ramp observed; phase review required",
+      "status_detail": "Twelve Grove cBEAM transactions were observed September 3\u201318. Approved key targets changed September 3 and September 17; the historical phase classification has not been re-attested.",
       "current_phase_id": "initial-envelope",
       "target_phase_id": null,
       "operator_changes_authorized": false,
-      "operator_note": "No change is authorized. A future increase must account for every route that can consume this shared capacity.",
+      "operator_note": "Use the separately sourced Target 1 and Target 2 programs for approved key targets. Reconcile the current phase, exposure and CRR requirements before authorizing new dashboard instructions. Execution evidence: https://forum.skyeco.com/t/grove-cbeam-configuration/28216/16",
       "exposure": {"observed_usd": 0, "requirement_verified": true, "source": "Not an exposure-gated track"},
       "qualitative_kpis": []
     },
@@ -140,7 +130,7 @@
       "current_phase_id": null,
       "target_phase_id": null,
       "operator_changes_authorized": false,
-      "operator_note": "Confirm Osero's current approved phase and KPI evidence before producing operator changes.",
+      "operator_note": "Mint and SparkLend deposit remain 5M capacity / 5M per day. Both PAU changes and core cBEAM activation are proposed for September 24; approved phase and qualitative KPI evidence remain unconfirmed.",
       "exposure": {
         "observed_usd": 0,
         "observed_at_utc": null,
@@ -152,25 +142,29 @@
       ]
     },
     "osero-usds": {
-      "status": "review_required",
-      "status_label": "Plan mismatch requires review",
-      "status_detail": "The plan describes bounded mint and burn limits, while the current burn key is unlimited.",
+      "status": "active",
+      "status_label": "Initial envelope observed; PAS pending",
+      "status_detail": "Live mint remains 5M capacity / 5M per day. Burn is unlimited, consistent with the published September 24 scope.",
       "current_phase_id": "initial-envelope",
       "target_phase_id": null,
       "operator_changes_authorized": false,
-      "operator_note": "Do not change the burn limit until the intended configuration is confirmed.",
+      "operator_note": "The proposed September 24 change raises mint to 50M and leaves burn unlimited. Do not mark execution or PAS activation before onchain confirmation.",
       "exposure": {"observed_usd": 0, "requirement_verified": true, "source": "Not an exposure-gated track"},
-      "qualitative_kpis": [
-        {"id": "burn-limit-review", "label": "Intended USDS burn limit confirmed", "required": true, "status": "missing"}
-      ]
+      "qualitative_kpis": []
     }
   },
   "programs": {
     "grove-basin-univ3-september-2026": {
-      "status": "planned",
-      "status_label": "Waiting for launch prerequisites",
+      "status": "review_required",
+      "status_label": "Approved targets; phase reconciliation required",
       "operator_changes_authorized": false,
-      "operator_note": "Wait for the required snapshot vote, the post-spell starting values, and live PAS registration before signing the first cBEAM batch."
+      "operator_note": "Targets are sourced from Grove governance announcements. Onchain execution is recorded through September 18. Resolve historical phase/exposure/CRR classification before enabling new instructions. Source: https://forum.skyeco.com/t/grove-cbeam-configuration/28216/2"
+    },
+    "grove-cbeam-target-2-september-2026": {
+      "status": "review_required",
+      "status_label": "Approved targets; phase reconciliation required",
+      "operator_changes_authorized": false,
+      "operator_note": "Targets are sourced from Grove governance announcements. Onchain execution is recorded through September 18. Resolve historical phase/exposure/CRR classification before enabling new instructions. Source: https://forum.skyeco.com/t/grove-cbeam-configuration/28216/14"
     }
   }
 }
