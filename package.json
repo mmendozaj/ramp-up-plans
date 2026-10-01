@@ -4,8 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node scripts/validate.mjs",
-    "build": "node scripts/build.mjs"
+    "test": "node scripts/validate.mjs && node scripts/test-documents.mjs",
+    "build": "node scripts/build.mjs",
+    "documents:check": "node scripts/watch-documents.mjs",
+    "agent:run": "python3 -m backend.agent"
   },
   "devDependencies": {
     "ajv": "8.20.0",

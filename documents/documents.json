@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "documents": [
+    {
+      "id": "grove-buidl",
+      "name": "BUIDL Basin Ramp-Up Plan",
+      "url": "https://docs.google.com/document/d/1wg0T8D3XKQ6EKyfAqXyoG93aYZN3akp1qBYkcaZLdXk/edit",
+      "track_sources": [
+        {"track_id": "grove-basin-buidl", "label": "BUIDL Basin ramp-up plan"}
+      ]
+    },
+    {
+      "id": "grove-jtrsy",
+      "name": "JTRSY Basin Ramp-Up Plan",
+      "url": "https://docs.google.com/document/d/1-Sb3-8927E7iigTKpAzMNKEBAb0jUmmeryqI3glxYRA/edit",
+      "track_sources": [
+        {"track_id": "grove-basin-jtrsy", "label": "JTRSY Basin ramp-up plan"},
+        {"track_id": "grove-usds", "label": "Controller supporting limits"},
+        {"track_id": "grove-psm", "label": "Controller supporting limits"}
+      ]
+    },
+    {
+      "id": "grove-uniswap-v3",
+      "name": "UniswapV3Facet Ramp-Up Plan",
+      "url": "https://docs.google.com/document/d/1dJRFtjh-rqqT5XYBeP4M0YctckMcgg4_pp5nAK-e200/edit",
+      "track_sources": [
+        {"track_id": "grove-uniswap-v3", "label": "UniswapV3Facet ramp-up plan"}
+      ]
+    },
+    {
+      "id": "osero-aave",
+      "name": "Osero DPAU & AaveFacet Ramp-Up Plan",
+      "url": "https://docs.google.com/document/d/1k0EMivACbs7-WbxXsXi_C6c_YKL6VCrpvLwopQK1vkA/edit",
+      "track_sources": [
+        {"track_id": "osero-aave", "label": "Osero DPAU and AaveFacet ramp-up plan"},
+        {"track_id": "osero-usds", "label": "Osero controller supporting limits"}
+      ]
+    },
+    {
+      "id": "spark-arbitrum-cctp-v2",
+      "name": "Spark Arbitrum DPAU & CCTP v2 Ramp-Up Plan",
+      "url": "https://docs.google.com/document/d/110IPR1Qa9rXN6q3OBX1o0dNgY-0UPESrB96h5T7hHVY/edit",
+      "track_sources": [
+        {"track_id": "spark-arbitrum-cctp-v2", "label": "Spark Arbitrum DPAU and CCTP v2 ramp-up plan"}
+      ]
+    }
+  ]
+}

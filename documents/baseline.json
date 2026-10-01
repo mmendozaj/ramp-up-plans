@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-10-01T05:56:15.202Z",
+  "plan_version": "2026-10-01.1",
+  "documents": {
+    "grove-buidl": {
+      "sha256": "9a01cb8c5ec898f454a68b1ff734ab343d640cc1812e2790645b6fdfd774b5d4"
+    },
+    "grove-jtrsy": {
+      "sha256": "a0eb0e643357fecbd36bf5e23e3daf5b19f962273b54222014c4f4de4109d6eb"
+    },
+    "grove-uniswap-v3": {
+      "sha256": "6f7545979c8307f04b8db32695b9e5269c9dc95523d8827b2d99f15ea32ee2cb"
+    },
+    "osero-aave": {
+      "sha256": "88f54a8583e5129c70b3d368044a41fb9233bd0885fc4f393e0c0cb26555b883"
+    },
+    "spark-arbitrum-cctp-v2": {
+      "sha256": "6db5c68e2188299ba14ec348f4f3c0c77671846d84421baf2bdf72fc51eeff1f"
+    }
+  }
+}

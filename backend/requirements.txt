@@ -1,0 +1,2 @@
+cryptography>=41
+python-dotenv>=1.0

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-09-21.2",
+  "version": "2026-10-01.2",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -10,14 +10,16 @@
     {
       "id": "grove",
       "name": "Grove",
+      "skyeco_url": "https://financial.skyeco.com/primes/grove",
       "tracks": [
         {
           "id": "grove-basin-jtrsy",
+          "skyeco_url": "https://forum.skyeco.com/t/august-27-2026-proposed-changes-to-grove-for-upcoming-spell/28164/7",
           "name": "JTRSY Basin",
           "facet": "BasinFacet",
           "instance": "JTRSY Grove Basin",
           "kind": "instance",
-          "plan_note": "September 3 and September 17 governance-approved key targets are shown in the explicit programs. Historical phase requirements are retained; the approved phase and exposure/CRR requirements need reconciliation before further dashboard authorization.",
+          "plan_note": "Historical phase requirements remain in the reviewed plan. The linked Skyeco record documents approved changes; actual onchain values appear below for comparison.",
           "rate_limit_metadata": [
             {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "decimals": 18}
           ],
@@ -99,7 +101,6 @@
             {
               "id": "phase-4",
               "name": "Phase 4",
-              "tentative": true,
               "earliest_transition": "2026-09-10",
               "transition_window_end": "2026-09-14",
               "minimum_exposure_usd": 33000000,
@@ -107,7 +108,7 @@
               "dc_iam": {"duty": 0, "max_line_usd": 100000000, "gap_usd": 15000000, "ttl_seconds": 43200},
               "offchain": {"crr_percent": 1.5, "maximum_exposure_usd": 50000000},
               "rate_limit_targets": [
-                {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "max_amount_usd": 15000000, "slope_per_day_usd": 15000000},
                 {"label": "LIMIT_BASIN_WITHDRAW_USDS_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
                 {"label": "LIMIT_BASIN_WITHDRAW_USDC_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
               ]
@@ -115,13 +116,32 @@
             {
               "id": "phase-5",
               "name": "Phase 5",
-              "tentative": true,
               "earliest_transition": "2026-09-24",
               "transition_window_end": "2026-09-28",
               "minimum_exposure_usd": 100000000,
               "minimum_exposure_days": 14,
-              "dc_iam": {"duty": 0, "max_line_usd": 1000000000, "gap_usd": 150000000, "ttl_seconds": 43200},
+              "dc_iam": {"duty": 0, "max_line_usd": 500000000, "gap_usd": 25000000, "ttl_seconds": 43200},
               "offchain": {"crr_percent": 0.5, "maximum_exposure_usd": 500000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDS_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_BASIN_WITHDRAW_USDC_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            },
+            {
+              "id": "phase-6",
+              "name": "Phase 6 · tentative reference",
+              "tentative": true,
+              "parameters_tbd": true,
+              "earliest_transition": "2026-10-08",
+              "transition_window_end": "2026-10-12",
+              "minimum_exposure_usd": 0,
+              "requirements": [
+                "Final JTRSY-specific phase; further increases require a new Prime proposal and risk review.",
+                "The source marks these Phase 6 parameters as tentative and subject to Prime proposal and risk review."
+              ],
+              "dc_iam": {"duty": 0, "max_line_usd": 1500000000, "gap_usd": 150000000, "ttl_seconds": 43200},
+              "offchain": {"crr_percent": 0.5, "maximum_exposure_usd": 1500000000},
               "rate_limit_targets": [
                 {"label": "LIMIT_BASIN_DEPOSIT_USDS_JTRSY", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
                 {"label": "LIMIT_BASIN_WITHDRAW_USDS_JTRSY", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
@@ -132,6 +152,8 @@
         },
         {
           "id": "grove-basin-buidl",
+          "skyeco_url": "https://financial.skyeco.com/primes/grove/allocations/0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041?network=ethereum&wallet_address=0x491edfb0b8b608044e227225c715981a30f3a44e",
+          "skyeco_label": "BUIDL allocation on Skyeco",
           "name": "BUIDL Basin",
           "facet": "BasinFacet",
           "instance": "BUIDL Grove Basin",
@@ -148,8 +170,8 @@
           },
           "sources": [
             {
-              "label": "Basin ramp-up plan",
-              "url": "https://docs.google.com/document/d/1-Sb3-8927E7iigTKpAzMNKEBAb0jUmmeryqI3glxYRA/edit?tab=t.0",
+              "label": "BUIDL Basin ramp-up plan",
+              "url": "https://docs.google.com/document/d/1wg0T8D3XKQ6EKyfAqXyoG93aYZN3akp1qBYkcaZLdXk/edit?tab=t.0",
               "visibility": "restricted"
             }
           ],
@@ -237,11 +259,19 @@
         },
         {
           "id": "grove-uniswap-v3",
+          "skyeco_url": "https://forum.skyeco.com/t/august-27-2026-proposed-changes-to-grove-for-upcoming-spell/28164/7",
           "name": "AUSD / USDC",
           "facet": "UniswapV3Facet",
           "instance": "AUSD-USDC",
           "kind": "pool",
-          "plan_note": "September 3 and September 17 governance-approved key targets are shown in the explicit programs. Historical phase requirements are retained; the approved phase and exposure/CRR requirements need reconciliation before further dashboard authorization.",
+          "plan_note": "Historical phase requirements remain in the reviewed plan. The linked Skyeco record documents approved changes; actual onchain values appear below for comparison.",
+          "rate_limit_metadata": [
+            {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD-USDC", "decimals": 18},
+            {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD_AUSD-USDC", "decimals": 6},
+            {"label": "LIMIT_UNISWAP_V3_DEPOSIT_USDC_AUSD-USDC", "decimals": 6},
+            {"label": "LIMIT_UNISWAP_V3_SWAP_AUSD_AUSD-USDC", "decimals": 6},
+            {"label": "LIMIT_UNISWAP_V3_SWAP_USDC_AUSD-USDC", "decimals": 6}
+          ],
           "exposure_source": {
             "kind": "rrc_allocation",
             "url": "https://sky.data.blockanalitica.com/internal/rrc/primes/grove/allocations/?limit=100",
@@ -355,22 +385,31 @@
             {
               "id": "phase-4",
               "name": "Phase 4",
-              "tentative": true,
-              "parameters_tbd": true,
               "earliest_transition": "2026-09-24",
               "transition_window_end": "2026-09-28",
               "minimum_exposure_usd": 0,
               "requirements": [
-                "Determine the long-term CRR.",
-                "Determine the long-term maximum exposure.",
-                "Confirm long-term rate limits. The source notes 25 million USD maximum and refill as a likely value, with 5 million USD for swaps, but does not approve these as final parameters."
+                "Final UniswapV3Facet phase; further increases require a new Prime proposal and risk review.",
+                "The source states that the CRR equals the current CRR minimum, noted as 2% in the document."
               ],
-              "rate_limit_targets": []
+              "dc_iam": {"duty": 0, "max_line_usd": 500000000, "gap_usd": 25000000, "ttl_seconds": 43200},
+              "offchain": {"crr_percent": 2, "maximum_exposure_usd": 100000000},
+              "rate_limit_targets": [
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD-USDC", "max_amount_usd": 25000000, "slope_per_day_usd": 25000000},
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_AUSD_AUSD-USDC", "max_amount_usd": 25000000, "slope_per_day_usd": 25000000},
+                {"label": "LIMIT_UNISWAP_V3_DEPOSIT_USDC_AUSD-USDC", "max_amount_usd": 25000000, "slope_per_day_usd": 25000000},
+                {"label": "LIMIT_UNISWAP_V3_SWAP_AUSD_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 25000000},
+                {"label": "LIMIT_UNISWAP_V3_SWAP_USDC_AUSD-USDC", "max_amount_usd": 5000000, "slope_per_day_usd": 25000000},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_AUSD_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
+                {"label": "LIMIT_UNISWAP_V3_WITHDRAW_USDC_AUSD-USDC", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
             }
           ]
         },
         {
           "id": "grove-usds",
+          "skyeco_url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216",
           "name": "USDS mint / burn",
           "facet": "USDSFacet",
           "kind": "shared_route",
@@ -414,10 +453,11 @@
               ]
             }
           ],
-          "plan_note": "September 3 and September 17 governance-approved key targets are shown in the explicit programs. Historical phase requirements are retained; the approved phase and exposure/CRR requirements need reconciliation before further dashboard authorization."
+          "plan_note": "Historical supporting-limit envelopes remain in the reviewed plan. The linked Skyeco record documents approved changes; actual onchain values appear below for comparison."
         },
         {
           "id": "grove-psm",
+          "skyeco_url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216",
           "name": "USDS / USDC swaps",
           "facet": "PSMFacet",
           "kind": "shared_route",
@@ -457,7 +497,7 @@
               ]
             }
           ],
-          "plan_note": "September 3 and September 17 governance-approved key targets are shown in the explicit programs. Historical phase requirements are retained; the approved phase and exposure/CRR requirements need reconciliation before further dashboard authorization."
+          "plan_note": "Historical supporting-limit envelopes remain in the reviewed plan. The linked Skyeco record documents approved changes; actual onchain values appear below for comparison."
         }
       ],
       "operator_programs": [
@@ -729,15 +769,17 @@
     {
       "id": "osero",
       "name": "Osero",
+      "skyeco_url": "https://financial.skyeco.com/primes/osero",
       "visible": true,
       "tracks": [
         {
           "id": "osero-aave",
+          "skyeco_url": "https://forum.skyeco.com/t/technical-scope-of-the-oseros-cbeam-activation/28239",
           "name": "SparkLend spUSDS",
           "facet": "AaveFacet",
           "instance": "spUSDS",
           "kind": "market",
-          "plan_note": "September 24 proposals cover PAS authorization, cBEAM registration/pairing, and 50M USDS mint/deposit limits. No execution observed as of September 21. Historical intermediate phases are retained for review and do not attest activation.",
+          "plan_note": "The live source document ends at Phase 5 with 50M USDS Aave deposit capacity/refill, 1% CRR, and 200M maximum exposure. These are planned parameters, not evidence of an approved active phase or PAS execution.",
           "rate_limit_metadata": [
             {"label": "LIMIT_AAVE_DEPOSIT", "decimals": 18}
           ],
@@ -750,6 +792,7 @@
           "sources": [
             {
               "label": "Osero DPAU and AaveFacet ramp-up plan",
+              "url": "https://docs.google.com/document/d/1k0EMivACbs7-WbxXsXi_C6c_YKL6VCrpvLwopQK1vkA/edit?tab=t.0",
               "visibility": "restricted"
             },
             {
@@ -806,7 +849,6 @@
             {
               "id": "phase-3",
               "name": "Phase 3",
-              "tentative": true,
               "earliest_transition": "2026-08-27",
               "minimum_exposure_usd": 10000000,
               "minimum_rrc_usd": 1000000,
@@ -822,7 +864,6 @@
             {
               "id": "phase-4",
               "name": "Phase 4",
-              "tentative": true,
               "earliest_transition": "2026-09-10",
               "minimum_exposure_usd": 50000000,
               "minimum_rrc_usd": 3300000,
@@ -842,34 +883,25 @@
             {
               "id": "phase-5",
               "name": "Phase 5",
-              "tentative": true,
               "earliest_transition": "2026-09-24",
               "transition_window_end": "2026-09-28",
-              "minimum_exposure_usd": 150000000,
-              "minimum_exposure_days": 14,
-              "absolute_minimum_days": 10,
+              "minimum_exposure_usd": 0,
               "requirements": [
-                "Supply the required exposure as soon as possible and maintain it until the next spell, with an absolute minimum of 10 days."
+                "Final AaveFacet phase; no minimum exposure requirement applies.",
+                "Further increases require a new Prime proposal and risk review."
               ],
               "dc_iam": {"duty": 0, "max_line_usd": 200000000, "gap_usd": 50000000, "ttl_seconds": 86400},
-              "offchain": {"crr_basis": "SparkLend CRR", "maximum_exposure_usd": 200000000},
+              "offchain": {"crr_percent": 1, "maximum_exposure_usd": 200000000},
               "rate_limit_targets": [
                 {"label": "LIMIT_AAVE_DEPOSIT", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
                 {"label": "LIMIT_AAVE_WITHDRAW", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
               ]
-            },
-            {
-              "id": "phase-6",
-              "name": "Phase 6",
-              "parameters_tbd": true,
-              "minimum_exposure_usd": 0,
-              "requirements": ["Phase 6 date and parameters remain to be determined."],
-              "rate_limit_targets": []
             }
           ]
         },
         {
           "id": "osero-usds",
+          "skyeco_url": "https://forum.skyeco.com/t/september-24-2026-proposed-changes-to-osero-for-upcoming-spell/28224",
           "name": "USDS mint / burn",
           "facet": "USDSFacet",
           "kind": "shared_route",
@@ -880,6 +912,7 @@
           "sources": [
             {
               "label": "Osero controller supporting limits",
+              "url": "https://docs.google.com/document/d/1k0EMivACbs7-WbxXsXi_C6c_YKL6VCrpvLwopQK1vkA/edit?tab=t.0",
               "visibility": "restricted"
             },
             {
@@ -940,9 +973,54 @@
               ]
             }
           ],
-          "plan_note": "September 24 proposals cover PAS authorization, cBEAM registration/pairing, and 50M USDS mint/deposit limits. No execution observed as of September 21. Historical intermediate phases are retained for review and do not attest activation."
+          "plan_note": "The live Osero ramp-up document specifies a final 50M USDS mint envelope. A planned envelope does not attest onchain execution or phase approval."
         }
       ]
+    },
+    {
+      "id": "spark",
+      "name": "Spark",
+      "skyeco_url": "https://financial.skyeco.com/primes/spark",
+      "visible": true,
+      "policy_defaults": {"hop_seconds": 57600, "max_change": "0", "max_change_status": "unassessed"},
+      "tracks": [
+        {
+          "id": "spark-arbitrum-cctp-v2",
+          "skyeco_url": "https://forum.skyeco.com/t/october-8-2026-proposed-changes-to-spark-for-upcoming-spell/28265",
+          "name": "Arbitrum → Ethereum CCTP v2",
+          "facet": "CCTPFacet",
+          "kind": "capital_flow",
+          "plan_note": "The current Google Doc contains Phase 1 only: 5M USDC maxAmount and 50M USDC/day for Ethereum domain 0, with the aggregate key unlimited. It sets no minimum completed volume, holding period, CRR, or separate offchain maximum exposure. KPI completion and spell execution remain unconfirmed.",
+          "rate_limit_metadata": [
+            {"label": "LIMIT_USDC_TO_DOMAIN_0", "decimals": 6, "expected_key": "0x90b598dae614822d554ec4f627bb5feab505106473a7911f34b36c0b3b9695c7"},
+            {"label": "LIMIT_USDC_TO_CCTP", "decimals": 6, "expected_key": "0x0476a9fd902eafdb5bcdabd9f0523dd7aacf7aa0c38c0e6ab912f5fed00f8e11"}
+          ],
+          "sources": [
+            {"label": "October 8 Spark spell proposal", "url": "https://forum.skyeco.com/t/october-8-2026-proposed-changes-to-spark-for-upcoming-spell/28265", "visibility": "public"},
+            {"label": "Spark Arbitrum DPAU and CCTP v2 ramp-up plan", "url": "https://docs.google.com/document/d/110IPR1Qa9rXN6q3OBX1o0dNgY-0UPESrB96h5T7hHVY/edit?usp=sharing", "visibility": "restricted"}
+          ],
+          "phases": [
+            {
+              "id": "proposed-onboarding",
+              "name": "Phase 1 · proposed onboarding spell",
+              "tentative": true,
+              "earliest_transition": "2026-10-08",
+              "minimum_exposure_usd": 0,
+              "requirements": [
+                "Core Council Risk Advisor confirms the per-domain and aggregate rate limits before the spell is finalised.",
+                "Spark provides a Facet Lindy KPI plan approved for technical completeness by Dewiz and Sidestream.",
+                "Complete the approved live KPIs with Arbitrum DPAU CCTP v2 source burns and corresponding Ethereum mints; reconcile amounts and fees. Legacy v1, failed and pending transfers do not qualify.",
+                "Verify PAS deployment, cBEAM authorization, exact onchain limits, and an end-to-end transfer after the spell."
+              ],
+              "rate_limit_targets": [
+                {"label": "LIMIT_USDC_TO_DOMAIN_0", "max_amount_usd": 5000000, "slope_per_day_usd": 50000000},
+                {"label": "LIMIT_USDC_TO_CCTP", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+              ]
+            }
+          ]
+        }
+      ],
+      "operator_programs": []
     }
   ]
 }
