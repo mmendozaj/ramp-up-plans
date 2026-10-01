@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at_utc": "2026-09-21T09:35:04Z",
+  "updated_at_utc": "2026-09-28T12:20:00Z",
   "tracks": {
     "grove-basin-jtrsy": {
       "status": "review_required",
@@ -151,6 +151,20 @@
       "operator_note": "The proposed September 24 change raises mint to 50M and leaves burn unlimited. Do not mark execution or PAS activation before onchain confirmation.",
       "exposure": {"observed_usd": 0, "requirement_verified": true, "source": "Not an exposure-gated track"},
       "qualitative_kpis": []
+    },
+    "spark-arbitrum-cctp-v2": {
+      "status": "needs_confirmation",
+      "status_label": "October 8 spell proposed; execution not confirmed",
+      "status_detail": "The new CCTP v2 keys and Arbitrum PAS are not yet confirmed active. Current onchain values appear separately in the live data panel.",
+      "current_phase_id": null,
+      "target_phase_id": null,
+      "operator_changes_authorized": false,
+      "operator_note": "No cBEAM increase is authorized. Await risk advisor limit confirmation, PAS deployment, the approved Lindy KPI plan, and executed spell evidence.",
+      "exposure": {"observed_usd": 0, "requirement_verified": true, "source": "Capital-flowing route; no outstanding exposure threshold in the draft plan"},
+      "qualitative_kpis": [
+        {"id": "spell-and-pas-confirmation", "label": "Spell and PAS configuration verified on Arbitrum", "required": true, "status": "missing"},
+        {"id": "facet-lindy-kpi-plan", "label": "Facet Lindy KPI plan approved by Dewiz and Sidestream", "required": true, "status": "missing"}
+      ]
     }
   },
   "programs": {

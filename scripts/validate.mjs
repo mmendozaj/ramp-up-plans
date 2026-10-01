@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
+import { applyDocumentLinks, loadDocuments } from "./documents.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -16,6 +17,15 @@ function validDate(value) {
 
 function finiteNonNegative(value) {
   return typeof value === "number" && Number.isFinite(value) && value >= 0;
+}
+
+function validSkyecoUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && ["financial.skyeco.com", "forum.skyeco.com"].includes(url.hostname);
+  } catch {
+    return false;
+  }
 }
 
 function semanticValidation(plans, attestations) {
@@ -39,11 +49,28 @@ function semanticValidation(plans, attestations) {
     if (prime.visible !== undefined && typeof prime.visible !== "boolean") {
       fail(`${primeAt}.visible`, "must be true or false");
     }
+    if (!validSkyecoUrl(prime.skyeco_url)) fail(`${primeAt}.skyeco_url`, "must link to Skyeco");
+    if (prime.policy_defaults) {
+      // The dashboard merges these over the global defaults. An unassessed
+      // maxChange must be "0" so the engine reports the policy as not ready.
+      const effective = { ...defaults, ...prime.policy_defaults };
+      if (effective.max_change_status === "unassessed") {
+        if (Number(effective.max_change) !== 0) {
+          fail(`${primeAt}.policy_defaults.max_change`, "must be \"0\" while max_change_status is unassessed");
+        }
+      } else if (!(Number(effective.max_change) >= 1)) {
+        fail(`${primeAt}.policy_defaults.max_change`, "must be at least 1");
+      }
+      if (!(effective.operating_cadence_seconds >= effective.hop_seconds)) {
+        fail(`${primeAt}.policy_defaults.hop_seconds`, "must not exceed operating_cadence_seconds");
+      }
+    }
 
     for (const [trackIndex, track] of prime.tracks.entries()) {
       const trackAt = `${primeAt}.tracks[${trackIndex}]`;
       if (tracks.has(track.id)) fail(`${trackAt}.id`, `duplicate track id ${track.id}`);
       tracks.set(track.id, track);
+      if (!validSkyecoUrl(track.skyeco_url)) fail(`${trackAt}.skyeco_url`, "must link to Skyeco");
       if (!Array.isArray(track.sources) || track.sources.length === 0) {
         fail(`${trackAt}.sources`, "must contain at least one source reference");
       }
@@ -175,15 +202,17 @@ function semanticValidation(plans, attestations) {
 }
 
 export async function validateRepository() {
-  const [plans, attestations, plansSchema, attestationsSchema] = await Promise.all([
+  const [plans, attestations, plansSchema, attestationsSchema, documents] = await Promise.all([
     readJson("plans/plans.json"),
     readJson("attestations/attestations.json"),
     readJson("schemas/plans.schema.json"),
     readJson("schemas/attestations.schema.json"),
+    loadDocuments(),
   ]);
   const ajv = new Ajv2020({ allErrors: true, strict: true });
   addFormats(ajv);
   const errors = [];
+  errors.push(...applyDocumentLinks(plans, documents));
   for (const [name, schema, data] of [
     ["plans/plans.json", plansSchema, plans],
     ["attestations/attestations.json", attestationsSchema, attestations],
