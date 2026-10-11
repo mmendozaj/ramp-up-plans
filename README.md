@@ -7,7 +7,10 @@ dashboard shows observed onchain values separately as a read-only comparison.
 
 ## Normal update workflow
 
-1. Edit `plans/plans.json` for a plan, Skyeco link, or parameter change.
+1. Read the current Google Doc and the relevant Skyeco forum discussion before
+   editing `plans/plans.json`. Use the newer Doc for proposed plan parameters;
+   use the forum for technical details such as contract addresses and rate-limit
+   key hashes. Record both source links and note any material disagreement.
 2. If maintaining the separate status feed, edit `attestations/attestations.json`
    for an approval, KPI, or confirmed-execution change. The registry itself does
    not use attestations to declare a current phase.
@@ -54,6 +57,11 @@ directly. An edited Doc does not by itself advance a phase, alter attestations,
 or silently change planned rate-limit targets. If a document
 becomes inaccessible to the server worker, the check fails and the last
 reviewed dashboard configuration remains in place.
+
+If other watched Docs have changed during a narrow reconciliation, accept only
+the reviewed source with `--accept-ids <document-id>` in the same command. The
+older hashes remain pending for a separate review; the check reports them again
+on its next run.
 
 ## Server-side reconciliation agent
 
