@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-10-12.1",
+  "version": "2026-10-14.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -281,9 +281,12 @@
           "facet": "BasinFacet",
           "instance": "BUIDL Grove Basin",
           "kind": "instance",
-          "plan_note": "Dates are milestone-dependent and phases may be delayed if KPIs are not met or the spell schedule changes.",
+          "plan_note": "Progression depends on milestones, KPI satisfaction, and spell scheduling. Each phase targets 14 continuous days at or above its minimum exposure, with an absolute floor of 10 days. Exposure must be maintained through the next spell execution; allocation deadlines are normally calculated backward from execution, typically four days after publication. Longer exposure and allocations above the minimum are encouraged.",
           "rate_limit_metadata": [
-            {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "decimals": 18}
+            {
+              "label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL",
+              "decimals": 18
+            }
           ],
           "exposure_source": {
             "kind": "rrc_allocation",
@@ -312,12 +315,32 @@
                 "Confirm final legal binding terms, including an approximately five-business-day wind-down and allocation of responsibilities and claims.",
                 "Enable BA Labs monitoring of trades, allocations, fees, and the BUIDL Basin module."
               ],
-              "dc_iam": {"duty": 0, "max_line_usd": 5000000, "gap_usd": 1000000, "ttl_seconds": 86400},
-              "offchain": {"crr_percent": 100, "maximum_exposure_usd": 2500000},
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 1500000000,
+                "gap_usd": 150000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": 100,
+                "maximum_exposure_usd": 2500000
+              },
               "rate_limit_targets": [
-                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+                {
+                  "label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL",
+                  "max_amount_usd": 5000000,
+                  "slope_per_day_usd": 5000000
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             },
             {
@@ -326,12 +349,32 @@
               "earliest_transition": "2026-08-13",
               "minimum_exposure_usd": 4000000,
               "minimum_exposure_days": 14,
-              "dc_iam": {"duty": 0, "max_line_usd": 10000000, "gap_usd": 2000000, "ttl_seconds": 86400},
-              "offchain": {"crr_percent": 25, "maximum_exposure_usd": 5000000},
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 1500000000,
+                "gap_usd": 150000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": 25,
+                "maximum_exposure_usd": 5000000
+              },
               "rate_limit_targets": [
-                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+                {
+                  "label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL",
+                  "max_amount_usd": 5000000,
+                  "slope_per_day_usd": 5000000
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             },
             {
@@ -340,12 +383,32 @@
               "earliest_transition": "2026-08-27",
               "minimum_exposure_usd": 10000000,
               "minimum_exposure_days": 14,
-              "dc_iam": {"duty": 0, "max_line_usd": 25000000, "gap_usd": 5000000, "ttl_seconds": 86400},
-              "offchain": {"crr_percent": 10, "maximum_exposure_usd": 12500000},
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 1500000000,
+                "gap_usd": 150000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": 10,
+                "maximum_exposure_usd": 12500000
+              },
               "rate_limit_targets": [
-                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 5000000, "slope_per_day_usd": 5000000},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+                {
+                  "label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL",
+                  "max_amount_usd": 5000000,
+                  "slope_per_day_usd": 5000000
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             },
             {
@@ -355,12 +418,32 @@
               "earliest_transition": "2026-09-10",
               "minimum_exposure_usd": 33000000,
               "minimum_exposure_days": 14,
-              "dc_iam": {"duty": 0, "max_line_usd": 100000000, "gap_usd": 15000000, "ttl_seconds": 43200},
-              "offchain": {"crr_percent": 1.5, "maximum_exposure_usd": 50000000},
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 1500000000,
+                "gap_usd": 150000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": 1.5,
+                "maximum_exposure_usd": 50000000
+              },
               "rate_limit_targets": [
-                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+                {
+                  "label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL",
+                  "max_amount_usd": 50000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             },
             {
@@ -370,12 +453,32 @@
               "earliest_transition": "2026-09-24",
               "minimum_exposure_usd": 100000000,
               "minimum_exposure_days": 14,
-              "dc_iam": {"duty": 0, "max_line_usd": 1000000000, "gap_usd": 150000000, "ttl_seconds": 43200},
-              "offchain": {"crr_percent": 0.5, "maximum_exposure_usd": 500000000},
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 1500000000,
+                "gap_usd": 150000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": 0.5,
+                "maximum_exposure_usd": 500000000
+              },
               "rate_limit_targets": [
-                {"label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL", "max_amount_usd": 50000000, "slope_per_day_usd": 50000000},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0},
-                {"label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+                {
+                  "label": "LIMIT_BASIN_DEPOSIT_USDS_BUIDL",
+                  "max_amount_usd": 50000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDS_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                },
+                {
+                  "label": "LIMIT_BASIN_WITHDRAW_USDC_BUIDL",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             }
           ]
