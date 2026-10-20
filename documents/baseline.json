@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-14T08:53:37.528Z",
-  "plan_version": "2026-10-14.1",
+  "captured_at_utc": "2026-10-20T08:18:13.779Z",
+  "plan_version": "2026-10-20.1",
   "documents": {
     "grove-buidl": {
       "sha256": "048cbe8d05ce61d4cc0a0c8d635ef9574bca990539ffdcbd863f46bcd64e057c"
@@ -10,7 +10,7 @@
       "sha256": "07deb04ae431d56eff3ed22e6d06a3ef4529369bddad5772ca031f928920f672"
     },
     "grove-uniswap-v3": {
-      "sha256": "601ac44733697ce6341706d95558b4327c8fffd319cd0adb993723487181406b"
+      "sha256": "7e4b2fd33b86b28a0a2a7ceaa66695376355fda1fc50ba010753916cd98c3e32"
     },
     "osero-aave": {
       "sha256": "303829a4fe06c277180e929940932be0157960a1fa58c8c2bdf57666128e428e"
