@@ -28,7 +28,7 @@ function validSkyecoUrl(value) {
   }
 }
 
-function semanticValidation(plans, attestations) {
+export function semanticValidation(plans, attestations) {
   const errors = [];
   const fail = (location, message) => errors.push(`${location}: ${message}`);
   const primeIds = new Set();
@@ -191,9 +191,8 @@ function semanticValidation(plans, attestations) {
     }
   }
 
-  for (const trackId of tracks.keys()) {
-    if (!(trackId in attestations.tracks)) fail(`attestations.tracks.${trackId}`, "is missing");
-  }
+  // A newly proposed plan can precede independent phase or operator evidence.
+  // The dashboard treats a missing attestation as unconfirmed and unauthorized.
   for (const programId of Object.keys(attestations.programs)) {
     if (!programs.has(programId)) fail(`attestations.programs.${programId}`, "does not correspond to a configured program");
   }

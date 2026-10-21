@@ -29,6 +29,23 @@ export function compareDocuments(registry, baseline, textById) {
   });
 }
 
+export function acceptedBaseline(baseline, documents, planVersion, acceptedIds, capturedAt) {
+  const selected = new Set(acceptedIds);
+  const known = new Set(documents.map((document) => document.id));
+  if (!selected.size || [...selected].some((id) => !known.has(id))) {
+    throw new Error("--accept-ids must name configured documents");
+  }
+  return {
+    schema_version: 1,
+    captured_at_utc: capturedAt,
+    plan_version: planVersion,
+    documents: Object.fromEntries(documents.flatMap((document) => {
+      const sha256 = selected.has(document.id) ? document.sha256 : baseline.documents?.[document.id]?.sha256;
+      return sha256 ? [[document.id, { sha256 }]] : [];
+    })),
+  };
+}
+
 export async function fetchDocumentText(document, offlineDir = null, accessToken = undefined) {
   const googleId = googleDocumentId(document.url);
   if (!googleId) throw new Error(`${document.id}: invalid Google Doc URL`);
@@ -63,6 +80,10 @@ async function main() {
   const reportPath = option("--report");
   const offlineDir = option("--offline-dir");
   const planVersion = option("--plan-version");
+  const acceptIds = option("--accept-ids");
+  if (arguments_.includes("--accept-ids") && (!accept || !acceptIds)) {
+    throw new Error("--accept-ids requires --accept and at least one document ID");
+  }
   const registry = await loadDocuments();
   const baselinePath = path.join(root, "documents/baseline.json");
   const baseline = JSON.parse(await readFile(baselinePath, "utf8"));
@@ -100,17 +121,15 @@ async function main() {
     if (!planVersion || planVersion !== plans.version) {
       throw new Error("--accept requires --plan-version matching the reviewed plans.version");
     }
-    if (changed.length && baseline.plan_version === plans.version) {
+    const selected = acceptIds ? acceptIds.split(",").map((id) => id.trim()) : documents.map((document) => document.id);
+    if (changed.some((document) => selected.includes(document.id)) && baseline.plan_version === plans.version) {
       throw new Error("the plan version must advance before accepting changed documents");
     }
-    const next = {
-      schema_version: 1,
-      captured_at_utc: report.checked_at_utc,
-      plan_version: plans.version,
-      documents: Object.fromEntries(documents.map((document) => [document.id, { sha256: document.sha256 }])),
-    };
+    const next = acceptedBaseline(baseline, documents, plans.version, selected, report.checked_at_utc);
     await writeFile(baselinePath, `${JSON.stringify(next, null, 2)}\n`);
-    console.log(`Captured baseline for plan version ${plans.version}.`);
+    console.log(`Captured baseline for plan version ${plans.version}; accepted ${selected.join(", ")}.`);
+    const pending = changed.filter((document) => !selected.includes(document.id));
+    if (pending.length) console.log(`Still pending reconciliation: ${pending.map((document) => document.id).join(", ")}.`);
   } else if (changed.length) {
     process.exitCode = 2;
   }
