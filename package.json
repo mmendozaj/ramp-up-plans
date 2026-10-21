@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node scripts/validate.mjs && node scripts/test-documents.mjs",
+    "test": "node scripts/validate.mjs && node scripts/test-documents.mjs && node scripts/test-validation.mjs",
     "build": "node scripts/build.mjs",
     "documents:check": "node scripts/watch-documents.mjs",
     "agent:run": "python3 -m backend.agent"

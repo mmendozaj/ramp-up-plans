@@ -37,6 +37,16 @@
       ]
     },
     {
+      "id": "osero-erc4626-morpho-v2",
+      "name": "Osero ERC4626 Facet Ramp-Up Plan — Morpho Vault v2",
+      "url": "https://docs.google.com/document/d/1DH9ycGN0k0P3twOVNCsSDMyHN4YaIXCMYby9B3gF65Y/edit",
+      "track_sources": [
+        {"track_id": "osero-erc4626-morpho-v2", "label": "Osero ERC4626 Morpho Vault v2 ramp-up plan"},
+        {"track_id": "osero-usds", "label": "ERC4626 plan controller limits"},
+        {"track_id": "osero-psm", "label": "ERC4626 plan PSM supporting limits"}
+      ]
+    },
+    {
       "id": "spark-arbitrum-cctp-v2",
       "name": "Spark Arbitrum DPAU & CCTP v2 Ramp-Up Plan",
       "url": "https://docs.google.com/document/d/110IPR1Qa9rXN6q3OBX1o0dNgY-0UPESrB96h5T7hHVY/edit",
