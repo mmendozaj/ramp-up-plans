@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-10-21.1",
+  "version": "2026-10-23.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -1492,13 +1492,33 @@
           "kind": "vault",
           "plan_note": "Milestone-dependent proposed phases. The Google Doc specifies a zero deposit slope in Phase 1 and 650k USDC/day in Phase 2; BA Labs separately proposed 650k/day as an optional initial PAS configuration, with inclusion in the October 8 spell unconfirmed. The Doc governs these proposed phase targets. DC-IAM, USDS, and PSM figures are shared PAU controller parameters. Key identification does not confirm spell execution, phase activation, or KPI completion.",
           "rate_limit_metadata": [
-            {"label": "ERC4626 Morpho Vault v2 deposit (USDC)", "decimals": 6, "expected_key": "0xfc26a91cf7b79b531d45dcc431ee59e4f2504f51cb33e2b67960808a104c92ef"},
-            {"label": "ERC4626 Morpho Vault v2 withdrawal", "decimals": 6, "expected_key": "0xcab6bfa8f90f2360ea56d52b48e71b2b98ee14414a2fd578d01dcfeb41cf97ca"}
+            {
+              "label": "ERC4626 Morpho Vault v2 deposit (USDC)",
+              "decimals": 6,
+              "expected_key": "0xfc26a91cf7b79b531d45dcc431ee59e4f2504f51cb33e2b67960808a104c92ef"
+            },
+            {
+              "label": "ERC4626 Morpho Vault v2 withdrawal",
+              "decimals": 6,
+              "expected_key": "0xcab6bfa8f90f2360ea56d52b48e71b2b98ee14414a2fd578d01dcfeb41cf97ca"
+            }
           ],
           "sources": [
-            {"label": "Osero ERC4626 Morpho Vault v2 ramp-up plan", "url": "https://docs.google.com/document/d/1DH9ycGN0k0P3twOVNCsSDMyHN4YaIXCMYby9B3gF65Y/edit", "visibility": "restricted"},
-            {"label": "Osero October 8 vault onboarding and rate-limit keys", "url": "https://forum.skyeco.com/t/october-8-2026-proposed-changes-to-osero-for-upcoming-spell/28253", "visibility": "public"},
-            {"label": "Osero ERC4626 Facet Lindy KPI plan", "url": "https://app.notion.com/p/Osero-testing-ERC4626Facet-functionalities-20bd79b5de3882d2bc45819b171bdcb8?v=2abd79b5de3880549551000cfd09ccc4", "visibility": "restricted"}
+            {
+              "label": "Osero ERC4626 Morpho Vault v2 ramp-up plan",
+              "url": "https://docs.google.com/document/d/1DH9ycGN0k0P3twOVNCsSDMyHN4YaIXCMYby9B3gF65Y/edit",
+              "visibility": "restricted"
+            },
+            {
+              "label": "Osero October 8 vault onboarding and rate-limit keys",
+              "url": "https://forum.skyeco.com/t/october-8-2026-proposed-changes-to-osero-for-upcoming-spell/28253",
+              "visibility": "public"
+            },
+            {
+              "label": "Osero ERC4626 Facet Lindy KPI plan",
+              "url": "https://app.notion.com/p/Osero-testing-ERC4626Facet-functionalities-20bd79b5de3882d2bc45819b171bdcb8?v=2abd79b5de3880549551000cfd09ccc4",
+              "visibility": "restricted"
+            }
           ],
           "phases": [
             {
@@ -1515,11 +1535,27 @@
                 "Use production permissions for live Lindy actions; deployment, fork, or simulation evidence may cover configuration-only and expected-revert checks.",
                 "Maintain at least 1 million USD of exposure until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum."
               ],
-              "dc_iam": {"duty": 0, "max_line_usd": 100000000, "gap_usd": 15000000, "ttl_seconds": 86400},
-              "offchain": {"crr_percent": 100, "maximum_exposure_usd": 5000000},
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 100000000,
+                "gap_usd": 15000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": 100,
+                "maximum_exposure_usd": 5000000
+              },
               "rate_limit_targets": [
-                {"label": "ERC4626 Morpho Vault v2 deposit (USDC)", "max_amount_usd": 5000000, "slope_per_day_usd": 0},
-                {"label": "ERC4626 Morpho Vault v2 withdrawal", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+                {
+                  "label": "ERC4626 Morpho Vault v2 deposit (USDC)",
+                  "max_amount_usd": 5000000,
+                  "slope_per_day_usd": 0
+                },
+                {
+                  "label": "ERC4626 Morpho Vault v2 withdrawal",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             },
             {
@@ -1530,12 +1566,30 @@
               "minimum_exposure_usd": 4000000,
               "minimum_exposure_days": 14,
               "absolute_minimum_days": 10,
-              "requirements": ["Maintain at least 4 million USD of exposure until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum."],
-              "dc_iam": {"duty": 0, "max_line_usd": 100000000, "gap_usd": 15000000, "ttl_seconds": 86400},
-              "offchain": {"crr_percent": 25, "maximum_exposure_usd": 10000000},
+              "requirements": [
+                "Maintain at least 4 million USD of exposure until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum."
+              ],
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 100000000,
+                "gap_usd": 15000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": 25,
+                "maximum_exposure_usd": 10000000
+              },
               "rate_limit_targets": [
-                {"label": "ERC4626 Morpho Vault v2 deposit (USDC)", "max_amount_usd": 5000000, "slope_per_day_usd": 650000},
-                {"label": "ERC4626 Morpho Vault v2 withdrawal", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+                {
+                  "label": "ERC4626 Morpho Vault v2 deposit (USDC)",
+                  "max_amount_usd": 5000000,
+                  "slope_per_day_usd": 650000
+                },
+                {
+                  "label": "ERC4626 Morpho Vault v2 withdrawal",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             },
             {
@@ -1546,16 +1600,75 @@
               "minimum_exposure_usd": 10000000,
               "minimum_exposure_days": 14,
               "absolute_minimum_days": 10,
-              "requirements": ["Maintain at least 10 million USD of exposure until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum."],
-              "dc_iam": {"duty": 0, "max_line_usd": 100000000, "gap_usd": 15000000, "ttl_seconds": 86400},
-              "offchain": {"crr_percent": 10, "maximum_exposure_usd": 25000000},
+              "requirements": [
+                "Maintain at least 10 million USD of exposure until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum."
+              ],
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 100000000,
+                "gap_usd": 15000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": 10,
+                "maximum_exposure_usd": 25000000
+              },
               "rate_limit_targets": [
-                {"label": "ERC4626 Morpho Vault v2 deposit (USDC)", "max_amount_usd": 5000000, "slope_per_day_usd": 1000000},
-                {"label": "ERC4626 Morpho Vault v2 withdrawal", "max_amount_usd": "unlimited", "slope_per_day_usd": 0}
+                {
+                  "label": "ERC4626 Morpho Vault v2 deposit (USDC)",
+                  "max_amount_usd": 5000000,
+                  "slope_per_day_usd": 1000000
+                },
+                {
+                  "label": "ERC4626 Morpho Vault v2 withdrawal",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
               ]
             },
-            {"id": "phase-4", "name": "Phase 4", "tentative": true, "parameters_tbd": true, "earliest_transition": "2026-11-19", "rate_limit_targets": []},
-            {"id": "phase-5", "name": "Phase 5", "tentative": true, "parameters_tbd": true, "earliest_transition": "2026-12-03", "rate_limit_targets": []}
+            {
+              "id": "phase-4",
+              "name": "Phase 4",
+              "tentative": true,
+              "parameters_tbd": false,
+              "earliest_transition": "2026-11-19",
+              "minimum_exposure_usd": 40000000,
+              "minimum_exposure_days": 14,
+              "absolute_minimum_days": 10,
+              "requirements": [
+                "Maintain at least 40 million USD of exposure until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum."
+              ],
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 100000000,
+                "gap_usd": 15000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": 5,
+                "maximum_exposure_usd": 80000000
+              },
+              "rate_limit_targets": [
+                {
+                  "label": "ERC4626 Morpho Vault v2 deposit (USDC)",
+                  "max_amount_usd": 15000000,
+                  "slope_per_day_usd": 10000000
+                },
+                {
+                  "label": "ERC4626 Morpho Vault v2 withdrawal",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            },
+            {
+              "id": "phase-5",
+              "name": "Phase 5",
+              "tentative": true,
+              "parameters_tbd": true,
+              "earliest_transition": "2026-12-03",
+              "rate_limit_targets": []
+            }
           ]
         },
         {
