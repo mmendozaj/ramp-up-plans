@@ -119,12 +119,12 @@ INSTRUCTIONS = (
     "phase body with its summary table; an explicit body correction takes precedence. Return JSON matching "
     "the schema. Include a complete revised JSON object for each affected track that requires a change, "
     "and omit unchanged tracks. Keep every existing track ID and phase ID in the same order. Preserve "
-    "unrelated metadata, public source links, and all unsupported values. Add no invented dates, targets, "
+    "track names, onchain_source identity mappings, unrelated metadata, public source links, and all unsupported values. A source URL may intentionally be shared by tracks on different chains; apply requirements to each mapped track without transferring execution evidence or chain identity. Add no invented dates, targets, "
     "CRR, exposure thresholds, or qualitative KPIs. Do not infer phase activation, execution, approval, "
     "KPI completion, or operator authorization. If the source is ambiguous, leave the value unchanged and "
     "describe the ambiguity in review_notes. Paraphrase prose in track_json, change_summary, and "
     "review_notes; do not copy source paragraphs. Preserve exact numeric values, contract keys, and labels "
-    "where needed. Never propose changes to attestations, programs, schemas, or other files."
+    "where needed. If document.requirements_only is true, preserve the current track phase dates; the source dates belong to another chain. Never propose changes to attestations, programs, schemas, or other files."
 )
 
 
@@ -136,7 +136,7 @@ def _prompt(document: dict, text: str, plans: dict) -> str:
     if len(text) > 250_000:
         raise ValueError(f"{document['id']}: text exceeds model input limit; review manually")
     return json.dumps({"task": "Reconcile this source revision into the affected proposed tracks.",
-                       "document": {"id": document["id"], "url": document["url"], "text": text},
+                       "document": {"id": document["id"], "url": document["url"], "requirements_only": bool(document.get("requirements_only")), "text": text},
                        "current_plan": {"version": plans["version"], "policy_defaults": plans["policy_defaults"], "tracks": tracks}},
                       ensure_ascii=False)
 

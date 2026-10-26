@@ -22,19 +22,17 @@ export function applyDocumentLinks(plans, registry) {
   }
   const tracks = new Map(plans.primes.flatMap((prime) => prime.tracks.map((track) => [track.id, track])));
   const ids = new Set();
-  const urls = new Set();
   const assignments = new Set();
   for (const [index, document] of registry.documents.entries()) {
     const at = `documents[${index}]`;
     const googleId = googleDocumentId(document.url);
     if (!/^[a-z0-9-]+$/.test(document.id ?? "") || ids.has(document.id)) errors.push(`${at}.id: missing or duplicate slug`);
-    if (!googleId || urls.has(googleId)) errors.push(`${at}.url: must be a unique Google Doc link`);
+    if (!googleId) errors.push(`${at}.url: must be a Google Doc link`);
     if (!document.name || !Array.isArray(document.track_sources) || !document.track_sources.length) {
       errors.push(`${at}: name and at least one track source are required`);
       continue;
     }
     ids.add(document.id);
-    urls.add(googleId);
     for (const source of document.track_sources) {
       const assignment = `${source.track_id}:${source.label}`;
       const track = tracks.get(source.track_id);

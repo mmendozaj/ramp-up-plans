@@ -88,11 +88,14 @@ async function main() {
   const baselinePath = path.join(root, "documents/baseline.json");
   const baseline = JSON.parse(await readFile(baselinePath, "utf8"));
   const textById = new Map();
+  const textByUrl = new Map();
   const errors = [];
   const accessToken = offlineDir ? null : await googleAccessToken();
   for (const document of registry.documents) {
     try {
-      textById.set(document.id, await fetchDocumentText(document, offlineDir, accessToken));
+      const sourceId = googleDocumentId(document.url);
+      if (!textByUrl.has(sourceId)) textByUrl.set(sourceId, await fetchDocumentText(document, offlineDir, accessToken));
+      textById.set(document.id, textByUrl.get(sourceId));
     } catch (error) {
       errors.push(`${document.id}: ${error.message}`);
     }

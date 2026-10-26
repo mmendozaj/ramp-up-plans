@@ -20,7 +20,7 @@ from dotenv import dotenv_values
 
 from .api import GitHub, RemoteError, Transport, fetch_document_text, google_access_token, http_request, propose_with_fallback
 from .core import (apply_document_links, apply_track_proposal, compare_documents, make_baseline,
-                   next_plan_version, render_plan_changes)
+                   google_document_id, next_plan_version, render_plan_changes)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -86,15 +86,26 @@ def run(*, dry_run: bool = False, offline_dir: str | None = None, env: dict[str,
             if github.file(relative, main_sha) != content:
                 raise ValueError(f"Server {relative} differs from GitHub main")
     registry = json.loads(files["documents/documents.json"])
+    # A shared source can govern requirements on another chain without supplying
+    # that chain's dates. Changing only the target entry's URL ends inheritance.
+    documents_by_id = {document["id"]: document for document in registry["documents"]}
+    for document in registry["documents"]:
+        inherited = documents_by_id.get(document.get("inherits_from"))
+        document["requirements_only"] = bool(inherited and google_document_id(inherited["url"]) == google_document_id(document["url"]))
     baseline = json.loads(files["documents/baseline.json"])
     original = json.loads(files["plans/plans.json"])
     registry_errors = apply_document_links(copy.deepcopy(original), registry)
     if registry_errors:
         raise ValueError("; ".join(registry_errors))
     token = None if offline_dir else google_access_token(env, transport)
-    text_by_id = {document["id"]: fetch_document_text(document, offline_dir=offline_dir,
-                                                      access_token=token, transport=transport)
-                  for document in registry["documents"]}
+    text_by_id = {}
+    text_by_url = {}
+    for document in registry["documents"]:
+        source_id = google_document_id(document["url"])
+        if source_id not in text_by_url:
+            text_by_url[source_id] = fetch_document_text(document, offline_dir=offline_dir,
+                                                         access_token=token, transport=transport)
+        text_by_id[document["id"]] = text_by_url[source_id]
     checked = compare_documents(registry, baseline, text_by_id)
     changed = [item for item in checked if item["status"] != "unchanged"]
     if not changed:

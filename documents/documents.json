@@ -53,6 +53,18 @@
       "track_sources": [
         {"track_id": "spark-arbitrum-cctp-v2", "label": "Spark Arbitrum DPAU and CCTP v2 ramp-up plan"}
       ]
+    },
+    {
+      "id": "spark-base-cctp-v2",
+      "inherits_from": "spark-arbitrum-cctp-v2",
+      "name": "Spark Base DPAU & CCTP v2 Ramp-Up Plan (initially shared Arbitrum source)",
+      "url": "https://docs.google.com/document/d/110IPR1Qa9rXN6q3OBX1o0dNgY-0UPESrB96h5T7hHVY/edit",
+      "track_sources": [
+        {
+          "track_id": "spark-base-cctp-v2",
+          "label": "Spark Base initial ramp-up plan (shared Arbitrum source)"
+        }
+      ]
     }
   ]
 }

@@ -154,3 +154,24 @@ reference values.
   or completed PAS onboarding.
 - Generated files include the source commit so operators can identify exactly
   which reviewed version they are reading.
+
+## Server checks and shared plan sources
+
+The existing `python -m backend.agent` server checker continues to check the
+source Docs hourly and propose review pull requests. Restart that process after
+updating this checkout so it loads the shared-source handling. GitHub validates
+pull requests and publishes reviewed merges through the existing Pages workflow;
+it does not run the document checker and needs no new model/API secrets.
+
+Spark Base has its own track and document registry entry, initially pointing to
+the same Google Doc as Spark Arbitrum at the requester's instruction. Shared
+URLs are valid; the watcher exports a shared source once and compares each
+entry's accepted hash independently. To separate them later, change only the
+Base entry's URL and review the resulting proposed plan update. Base approval,
+KPI, and activation records are independent and remain unconfirmed.
+
+Tracks identify their observation source using `onchain_source.chain_id` and
+`module_id` or `rate_limits_address`. The document worker preserves these
+identity mappings. `grove-rate-limit-monitor` supplies the observed data to both
+websites. Supported additions need backend registry/data and reviewed plan
+changes, not frontend code changes.

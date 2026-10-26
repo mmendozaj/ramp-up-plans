@@ -33,7 +33,6 @@ def apply_document_links(plans: dict, registry: dict) -> list[str]:
     tracks = {track["id"]: track for prime in plans["primes"] for track in prime["tracks"]}
     errors: list[str] = []
     ids: set[str] = set()
-    urls: set[str] = set()
     assignments: set[str] = set()
     for index, document in enumerate(registry["documents"]):
         at = f"documents[{index}]"
@@ -41,14 +40,13 @@ def apply_document_links(plans: dict, registry: dict) -> list[str]:
         google_id = google_document_id(document.get("url"))
         if not isinstance(doc_id, str) or not re.fullmatch(r"[a-z0-9-]+", doc_id) or doc_id in ids:
             errors.append(f"{at}.id: missing or duplicate slug")
-        if not google_id or google_id in urls:
-            errors.append(f"{at}.url: must be a unique Google Doc link")
+        if not google_id:
+            errors.append(f"{at}.url: must be a Google Doc link")
         sources = document.get("track_sources")
         if not document.get("name") or not isinstance(sources, list) or not sources:
             errors.append(f"{at}: name and at least one track source are required")
             continue
         ids.add(doc_id)
-        urls.add(google_id)
         for source in sources:
             assignment = f"{source.get('track_id')}:{source.get('label')}"
             track = tracks.get(source.get("track_id"))
@@ -116,7 +114,7 @@ def apply_track_proposal(plans: dict, document: dict, proposal: dict) -> dict:
             raise ValueError(f"{document['id']}: track identity or phases changed unexpectedly")
         prime, index = match
         original = prime["tracks"][index]
-        for key in ("facet", "kind", "instance", "visible", "rate_limit_metadata", "exposure_source", "skyeco_url", "skyeco_label"):
+        for key in ("name", "facet", "kind", "instance", "visible", "rate_limit_metadata", "exposure_source", "onchain_source", "skyeco_url", "skyeco_label"):
             if original.get(key) != revised.get(key):
                 raise ValueError(f"{document['id']}: {track_id}.{key} needs manual review")
         sources = revised.get("sources")
@@ -139,6 +137,12 @@ def apply_track_proposal(plans: dict, document: dict, proposal: dict) -> dict:
             raise ValueError(f"{document['id']}: phase IDs must be strings")
         if new_ids[: len(old_ids)] != old_ids or len(set(new_ids)) != len(new_ids):
             raise ValueError(f"{document['id']}: existing phase IDs and order must be preserved")
+        if document.get("requirements_only"):
+            originals = {phase["id"]: phase for phase in original["phases"]}
+            for phase in revised["phases"]:
+                for field in ("earliest_transition", "transition_window_end"):
+                    if phase.get(field) != originals.get(phase["id"], {}).get(field):
+                        raise ValueError(f"{document['id']}: shared-source dates require independent review")
         prime["tracks"][index] = revised
     return updated
 
