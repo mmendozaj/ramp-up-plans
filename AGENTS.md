@@ -7,19 +7,23 @@ quantitative lab). Do not maintain a copy of the ramp-up dashboard here or
 edit the cBEAM lab's manual `config/rate-limit-lab-plans.json` as if it were the
 live plan registry.
 
-As of 2026-10-01, `plans/plans.json` is version `2026-10-01.2`, with Grove,
-Osero, and Spark and eight tracks. It is the proposed/reviewed plan source.
-`attestations/attestations.json` is a separate evidence and approval record.
-`documents/documents.json` maps five Google Docs to the affected track IDs;
-`documents/baseline.json` records their last accepted text hashes. Source
+The registry includes Grove, Osero, Spark Arbitrum, and Spark Base. It is the
+proposed/reviewed plan source. `attestations/attestations.json` remains a separate
+evidence and approval record. Spark Base initially shares the Arbitrum Google
+Doc through its own `documents/documents.json` entry, so changing the Base URL
+can separate the plans later. Shared source URLs are permitted and exported
+once per check, with independent baseline entries. `onchain_source` maps each
+track to a chain/module or exact RateLimits address and must be preserved by
+the reconciliation worker. Source
 documents can change without a plan change or an activation.
 
 The Python server worker in `backend/agent.py` can check those Docs every 60
 minutes while running and open a pull request after sending
 the full changed Doc text and relevant plan tracks to the Anthropic Claude API,
 with OpenAI API fallback when configured. The user explicitly authorized both
-destinations and that payload on 2026-10-01. The worker is not deployed by this
-repository; it must be configured on a server. It requests GitHub auto-merge
+destinations and that payload on 2026-10-01. The worker runs on the existing server; GitHub only validates changes and
+publishes accepted plan merges. Restart the worker after updating its code so
+the new source handling is loaded. It requests GitHub auto-merge
 only if `main` requires an approval and the `validate` check. GitHub merges
 after those gates pass and then publishes through its separate Actions flow.
 No document text is stored in the repository or its published bundle.

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-10-24.1",
+  "version": "2026-10-26.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -14,6 +14,7 @@
       "tracks": [
         {
           "id": "grove-basin-jtrsy",
+          "onchain_source": {"chain_id": 1, "module_id": "grove-mainnet"},
           "skyeco_url": "https://forum.skyeco.com/t/august-27-2026-proposed-changes-to-grove-for-upcoming-spell/28164/7",
           "name": "JTRSY Basin",
           "facet": "BasinFacet",
@@ -275,6 +276,7 @@
         },
         {
           "id": "grove-basin-buidl",
+          "onchain_source": {"chain_id": 1, "module_id": "grove-mainnet"},
           "skyeco_url": "https://financial.skyeco.com/primes/grove/allocations/0x6a9da2d710bb9b700acde7cb81f10f1ff8c89041?network=ethereum&wallet_address=0x491edfb0b8b608044e227225c715981a30f3a44e",
           "skyeco_label": "BUIDL allocation on Skyeco",
           "name": "BUIDL Basin",
@@ -485,6 +487,7 @@
         },
         {
           "id": "grove-uniswap-v3",
+          "onchain_source": {"chain_id": 1, "module_id": "grove-mainnet"},
           "skyeco_url": "https://forum.skyeco.com/t/august-27-2026-proposed-changes-to-grove-for-upcoming-spell/28164/7",
           "name": "AUSD / USDC",
           "facet": "UniswapV3Facet",
@@ -850,6 +853,7 @@
         },
         {
           "id": "grove-usds",
+          "onchain_source": {"chain_id": 1, "module_id": "grove-mainnet"},
           "skyeco_url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216",
           "name": "USDS mint / burn",
           "facet": "USDSFacet",
@@ -920,6 +924,7 @@
         },
         {
           "id": "grove-psm",
+          "onchain_source": {"chain_id": 1, "module_id": "grove-mainnet"},
           "skyeco_url": "https://forum.skyeco.com/t/grove-cbeam-configuration/28216",
           "name": "USDS / USDC swaps",
           "facet": "PSMFacet",
@@ -1253,6 +1258,7 @@
       "tracks": [
         {
           "id": "osero-aave",
+          "onchain_source": {"chain_id": 1, "module_id": "osero-mainnet"},
           "skyeco_url": "https://forum.skyeco.com/t/technical-scope-of-the-oseros-cbeam-activation/28239",
           "name": "SparkLend spUSDS",
           "facet": "AaveFacet",
@@ -1484,6 +1490,7 @@
         },
         {
           "id": "osero-erc4626-morpho-v2",
+          "onchain_source": {"chain_id": 1, "module_id": "osero-mainnet"},
           "skyeco_url": "https://forum.skyeco.com/t/october-8-2026-proposed-changes-to-osero-for-upcoming-spell/28253",
           "skyeco_label": "Osero October 8 technical scope",
           "name": "Morpho Vault v2",
@@ -1673,6 +1680,7 @@
         },
         {
           "id": "osero-usds",
+          "onchain_source": {"chain_id": 1, "module_id": "osero-mainnet"},
           "skyeco_url": "https://forum.skyeco.com/t/september-24-2026-proposed-changes-to-osero-for-upcoming-spell/28224",
           "name": "USDS mint / burn",
           "facet": "USDSFacet",
@@ -1772,6 +1780,7 @@
         },
         {
           "id": "osero-psm",
+          "onchain_source": {"chain_id": 1, "module_id": "osero-mainnet"},
           "skyeco_url": "https://forum.skyeco.com/t/october-8-2026-proposed-changes-to-osero-for-upcoming-spell/28253",
           "skyeco_label": "Osero October 8 technical scope",
           "name": "USDS / USDC swaps",
@@ -1810,6 +1819,7 @@
       "tracks": [
         {
           "id": "spark-arbitrum-cctp-v2",
+          "onchain_source": {"chain_id": 42161, "module_id": "spark-arbitrum"},
           "skyeco_url": "https://forum.skyeco.com/t/october-8-2026-proposed-changes-to-spark-for-upcoming-spell/28265",
           "name": "Arbitrum → Ethereum CCTP v2",
           "facet": "CCTPFacet",
@@ -1842,6 +1852,64 @@
               ]
             }
           ]
+        },
+        {
+          "id": "spark-base-cctp-v2",
+          "onchain_source": {
+            "chain_id": 8453,
+            "module_id": "spark-base"
+          },
+          "skyeco_url": "https://financial.skyeco.com/primes/spark",
+          "name": "Base → Ethereum CCTP v2",
+          "facet": "CCTPFacet",
+          "kind": "capital_flow",
+          "plan_note": "Base initially follows the Spark Arbitrum Phase 1 requirements and targets from the shared source. Base onboarding dates, approvals, KPI completion, and activation require separate confirmation.",
+          "rate_limit_metadata": [
+            {
+              "label": "LIMIT_USDC_TO_DOMAIN_0",
+              "decimals": 6,
+              "expected_key": "0x90b598dae614822d554ec4f627bb5feab505106473a7911f34b36c0b3b9695c7"
+            },
+            {
+              "label": "LIMIT_USDC_TO_CCTP",
+              "decimals": 6,
+              "expected_key": "0x0476a9fd902eafdb5bcdabd9f0523dd7aacf7aa0c38c0e6ab912f5fed00f8e11"
+            }
+          ],
+          "sources": [
+            {
+              "label": "Spark Base initial ramp-up plan (shared Arbitrum source)",
+              "url": "https://docs.google.com/document/d/110IPR1Qa9rXN6q3OBX1o0dNgY-0UPESrB96h5T7hHVY/edit",
+              "visibility": "restricted"
+            }
+          ],
+          "phases": [
+            {
+              "id": "proposed-onboarding",
+              "name": "Phase 1 · proposed onboarding spell",
+              "tentative": true,
+              "minimum_exposure_usd": 0,
+              "requirements": [
+                "Core Council Risk Advisor confirms the per-domain and aggregate rate limits before the spell is finalised.",
+                "Spark provides a Facet Lindy KPI plan approved for technical completeness by Dewiz and Sidestream.",
+                "Complete the approved live KPIs with Base DPAU CCTP v2 source burns and corresponding Ethereum mints; reconcile amounts and fees. Legacy v1, failed and pending transfers do not qualify.",
+                "Verify PAS deployment, cBEAM authorization, exact onchain limits, and an end-to-end transfer after the spell."
+              ],
+              "rate_limit_targets": [
+                {
+                  "label": "LIMIT_USDC_TO_DOMAIN_0",
+                  "max_amount_usd": 5000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "LIMIT_USDC_TO_CCTP",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            }
+          ],
+          "skyeco_label": "Spark on Skyeco"
         }
       ],
       "operator_programs": []

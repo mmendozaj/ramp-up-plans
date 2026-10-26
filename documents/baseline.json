@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "captured_at_utc": "2026-10-23T14:32:52.195Z",
-  "plan_version": "2026-10-24.1",
+  "plan_version": "2026-10-26.1",
   "documents": {
     "grove-buidl": {
       "sha256": "048cbe8d05ce61d4cc0a0c8d635ef9574bca990539ffdcbd863f46bcd64e057c"
@@ -19,6 +19,9 @@
       "sha256": "2f42a6470d8dde711edd4a93a87893e363749d893f04bff44274a05be2a17902"
     },
     "spark-arbitrum-cctp-v2": {
+      "sha256": "6db5c68e2188299ba14ec348f4f3c0c77671846d84421baf2bdf72fc51eeff1f"
+    },
+    "spark-base-cctp-v2": {
       "sha256": "6db5c68e2188299ba14ec348f4f3c0c77671846d84421baf2bdf72fc51eeff1f"
     }
   }

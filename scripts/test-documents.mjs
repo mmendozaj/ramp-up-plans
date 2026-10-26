@@ -28,4 +28,14 @@ const partial = acceptedBaseline(
 );
 assert.equal(partial.documents.old.sha256, "accepted-old");
 assert.equal(partial.documents.sample.sha256, current);
+// Independent entries may intentionally share a Google Doc until their plans diverge.
+const sharedPlans = structuredClone(plans);
+sharedPlans.primes[0].tracks.push({ id: "base", sources: [] });
+const sharedRegistry = structuredClone(registry);
+sharedRegistry.documents.push({ ...registry.documents[0], id: "base-source", track_sources: [{ track_id: "base", label: "Base plan" }] });
+assert.deepEqual(applyDocumentLinks(sharedPlans, sharedRegistry), []);
+sharedRegistry.documents[1].url = "https://docs.google.com/document/d/bbbbbbbbbbbbbbbbbbbb/edit";
+assert.deepEqual(applyDocumentLinks(sharedPlans, sharedRegistry), []);
+assert.equal(sharedPlans.primes[0].tracks[0].sources[0].url, registry.documents[0].url);
+assert.equal(sharedPlans.primes[0].tracks[1].sources[0].url, sharedRegistry.documents[1].url);
 console.log("Document registry and revision checks passed.");
