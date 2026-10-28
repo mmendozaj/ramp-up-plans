@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-10-26.1",
+  "version": "2026-10-28.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
