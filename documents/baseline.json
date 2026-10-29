@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-29T11:42:47.141Z",
-  "plan_version": "2026-10-29.1",
+  "captured_at_utc": "2026-10-29T12:43:31.341Z",
+  "plan_version": "2026-10-29.2",
   "documents": {
     "grove-buidl": {
       "sha256": "048cbe8d05ce61d4cc0a0c8d635ef9574bca990539ffdcbd863f46bcd64e057c"
@@ -16,7 +16,7 @@
       "sha256": "303829a4fe06c277180e929940932be0157960a1fa58c8c2bdf57666128e428e"
     },
     "osero-erc4626-morpho-v2": {
-      "sha256": "1da8ef297df7ec7e9fe1dc1646e2d9843a5f27a4d30f5d74e44f97800f2902c9"
+      "sha256": "29e582cd66ec72a226f3fda837d61d600fc9508dc6491574813edb73969c04d1"
     },
     "spark-arbitrum-cctp-v2": {
       "sha256": "4123555d91dc359e156107fe636cf4be33f273f31b57f1ee13ac96c870881565"

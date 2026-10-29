@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-10-29.1",
+  "version": "2026-10-29.2",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -1679,8 +1679,11 @@
               "tentative": true,
               "parameters_tbd": false,
               "earliest_transition": "2026-12-03",
+              "minimum_exposure_usd": 100000000,
+              "minimum_exposure_days": 14,
+              "absolute_minimum_days": 10,
               "requirements": [
-                "No minimum exposure requirement applies in this final phase.",
+                "Maintain at least 100 million USD of exposure through the next spell's execution, aiming for 14 continuous days and never fewer than 10 days.",
                 "The Phase 5 ERC4626 rate-limit targets are the standing parameters proposed by this ramp-up plan, rather than an interim step toward further increases.",
                 "Any subsequent increase requires a separate Prime proposal and risk review outside this plan."
               ],
@@ -1691,14 +1694,14 @@
                 "ttl_seconds": 86400
               },
               "offchain": {
-                "crr_percent": 25,
-                "maximum_exposure_usd": 10000000
+                "crr_percent": "Core CRR",
+                "maximum_exposure_usd": 200000000
               },
               "rate_limit_targets": [
                 {
                   "label": "ERC4626 Morpho Vault v2 deposit (USDC)",
-                  "max_amount_usd": 5000000,
-                  "slope_per_day_usd": 650000
+                  "max_amount_usd": 50000000,
+                  "slope_per_day_usd": 50000000
                 },
                 {
                   "label": "ERC4626 Morpho Vault v2 withdrawal",
