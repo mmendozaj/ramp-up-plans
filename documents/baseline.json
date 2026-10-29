@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "captured_at_utc": "2026-10-29T14:44:21.971Z",
-  "plan_version": "2026-10-29.2",
+  "plan_version": "2026-10-29.3",
   "documents": {
     "grove-buidl": {
       "sha256": "048cbe8d05ce61d4cc0a0c8d635ef9574bca990539ffdcbd863f46bcd64e057c"
