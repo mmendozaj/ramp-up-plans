@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-10-29.3",
+  "version": "2026-10-30.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -1540,9 +1540,11 @@
               "minimum_exposure_days": 14,
               "absolute_minimum_days": 10,
               "requirements": [
-                "Osero's ERC4626 Facet Lindy KPI plan identifies the live capital-moving operations, exposure-building path, proposed transaction amounts, and expected onchain evidence.",
-                "Dewiz and Sidestream verify the KPI plan's technical completeness before execution; BA Labs checks phase consistency and tracks approved live operations onchain.",
-                "Use production permissions for live Lindy actions; deployment, fork, or simulation evidence may cover configuration-only and expected-revert checks.",
+                "Carry out the operations specified in the Prime's approved Facet Lindy KPI plan under CC supervision.",
+                "Osero's ERC4626 Facet Lindy KPI plan must define the initial bounded Phase 1 roundtrip of material capital-moving operations, including relevant branches or directions; identify later exposure-building and maintenance operations; specify proposed token amounts and expected onchain evidence for each live operation; and distinguish pre-flight or configuration checks from Lindy-building actions.",
+                "The Prime defines the live operations and proposed transaction amounts. Dewiz and Sidestream must review and sign off on technical completeness before execution; BA Labs checks alignment with phase parameters and tracks fulfillment of approved requirements onchain.",
+                "Live Phase 1 Lindy actions should use normal production permissions between spells. Spell/SubProxy-only configuration may be checked through deployment evidence and exact-version fork or Tenderly simulations, unless exercising that execution path is itself a testing objective.",
+                "Expected-revert and failure cases generally need not be live Lindy KPIs; test suites, fork tests, or simulations may provide that coverage.",
                 "Maintain at least 1 million USD of exposure until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum."
               ],
               "dc_iam": {
