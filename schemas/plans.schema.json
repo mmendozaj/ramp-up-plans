@@ -56,7 +56,13 @@
         "name": {"type": "string", "minLength": 1},
         "earliest_transition": {"type": "string", "format": "date"},
         "transition_window_end": {"type": "string", "format": "date"},
-        "minimum_exposure_usd": {"type": "number", "minimum": 0},
+        "minimum_exposure_usd": {
+          "description": "Minimum exposure in USD, or N/A when no minimum exposure requirement applies.",
+          "oneOf": [
+            {"type": "number", "minimum": 0},
+            {"const": "N/A"}
+          ]
+        },
         "minimum_exposure_days": {"type": "number", "minimum": 0},
         "minimum_phase_days": {"type": "number", "minimum": 0},
         "absolute_minimum_days": {"type": "number", "minimum": 0},
