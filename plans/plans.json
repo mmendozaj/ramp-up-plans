@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-10-30.2",
+  "version": "2026-11-02.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -1500,7 +1500,7 @@
           "facet": "ERC4626Facet",
           "instance": "Morpho Vault v2",
           "kind": "vault",
-          "plan_note": "Milestone-dependent proposed phases. The Google Doc specifies a zero deposit slope in Phase 1 and 650k USDC/day in Phase 2; BA Labs separately proposed 650k/day as an optional initial PAS configuration, with inclusion in the October 8 spell unconfirmed. The Doc governs these proposed phase targets. DC-IAM, USDS, and PSM figures are shared PAU controller parameters. Key identification does not confirm spell execution, phase activation, or KPI completion.",
+          "plan_note": "Phase dates are proposed earliest milestones and remain conditional on prerequisites and spell scheduling. The document specifies a zero Phase 1 deposit slope and 650k USDC/day in Phase 2; the separate BA Labs suggestion of 650k/day for initial PAS configuration does not establish inclusion in the October 8 spell. The document governs these proposed phase targets. DC-IAM, USDS, and PSM values describe shared PAU controller parameters. Phase 6 establishes the final ERC4626 parameters in this plan, subject to completion of Phase 5 exposure requirements. Parameter identification establishes neither execution nor activation, approval, or KPI completion.",
           "rate_limit_metadata": [
             {
               "label": "ERC4626 Morpho Vault v2 deposit (USDC)",
@@ -1579,7 +1579,7 @@
               "minimum_exposure_days": 14,
               "absolute_minimum_days": 10,
               "requirements": [
-                "Maintain at least 4 million USD of exposure until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum."
+                "Allocate at least 4 million USD promptly and maintain that exposure until the next phase activates, targeting 14 continuous days with a 10-day absolute minimum."
               ],
               "dc_iam": {
                 "duty": 0,
@@ -1613,7 +1613,7 @@
               "minimum_exposure_days": 14,
               "absolute_minimum_days": 10,
               "requirements": [
-                "Maintain at least 10 million USD of exposure until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum."
+                "Allocate at least 10 million USD promptly and maintain that exposure until the next phase activates, targeting 14 continuous days with a 10-day absolute minimum."
               ],
               "dc_iam": {
                 "duty": 0,
@@ -1649,7 +1649,7 @@
               "absolute_minimum_days": 10,
               "requirements": [
                 "The 40 million USD minimum and 80 million USD maximum are aggregate exposure limits across Osero's Ethereum and Base Morpho vaults, not separate limits for each vault.",
-                "The proposed aggregate minimum applies from execution of the November 19 spell and is to be maintained until the next spell executes, targeting 14 continuous days with a 10-day absolute minimum.",
+                "Allocate the proposed aggregate minimum promptly and maintain it until the next phase activates, targeting 14 continuous days with a 10-day absolute minimum. November 19 is an earliest start date, not evidence of spell execution or phase activation.",
                 "Either vault may hold 0%–100% of the aggregate allocation; no fixed split between Ethereum and Base is required."
               ],
               "dc_iam": {
@@ -1685,19 +1685,52 @@
               "minimum_exposure_days": 14,
               "absolute_minimum_days": 10,
               "requirements": [
-                "Maintain at least 100 million USD of exposure through the next spell's execution, aiming for 14 continuous days and never fewer than 10 days.",
-                "The Phase 5 ERC4626 rate-limit targets are the standing parameters proposed by this ramp-up plan, rather than an interim step toward further increases.",
-                "Any subsequent increase requires a separate Prime proposal and risk review outside this plan."
+                "Allocate at least 100 million USD promptly and maintain that exposure until Phase 6 activates, targeting 14 continuous days with a 10-day absolute minimum."
               ],
               "dc_iam": {
                 "duty": 0,
-                "max_line_usd": 100000000,
-                "gap_usd": 15000000,
+                "max_line_usd": 500000000,
+                "gap_usd": 150000000,
                 "ttl_seconds": 86400
               },
               "offchain": {
                 "crr_percent": "Core CRR",
                 "maximum_exposure_usd": 200000000
+              },
+              "rate_limit_targets": [
+                {
+                  "label": "ERC4626 Morpho Vault v2 deposit (USDC)",
+                  "max_amount_usd": 50000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "ERC4626 Morpho Vault v2 withdrawal",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            },
+            {
+              "id": "phase-6",
+              "name": "Phase 6",
+              "tentative": true,
+              "earliest_transition": "2026-12-17",
+              "minimum_exposure_usd": "N/A",
+              "requirements": [
+                "Phase 6 cannot start before December 17, 2026, and requires completion of Phase 5's minimum exposure and duration conditions.",
+                "This final phase establishes the standing ERC4626 rate-limit parameters for this plan. No additional Lindy-specific minimum exposure or maximum exposure ceiling applies; other risk constraints and onchain controls continue to apply.",
+                "The DC-IAM settings represent Osero's aggregate allocation capacity at this stage and may be reconsidered as additional facets or allocation needs arise.",
+                "Further increases fall outside this ramp-up and require a separate Prime proposal and risk review."
+              ],
+              "dc_iam": {
+                "duty": 0,
+                "max_line_usd": 500000000,
+                "gap_usd": 150000000,
+                "ttl_seconds": 86400
+              },
+              "offchain": {
+                "crr_percent": "Core CRR",
+                "maximum_exposure_usd": "N/A"
               },
               "rate_limit_targets": [
                 {
