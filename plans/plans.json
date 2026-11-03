@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-11-02.2",
+  "version": "2026-11-03.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -487,7 +487,10 @@
         },
         {
           "id": "grove-uniswap-v3",
-          "onchain_source": {"chain_id": 1, "module_id": "grove-mainnet"},
+          "onchain_source": {
+            "chain_id": 1,
+            "module_id": "grove-mainnet"
+          },
           "skyeco_url": "https://forum.skyeco.com/t/august-27-2026-proposed-changes-to-grove-for-upcoming-spell/28164/7",
           "name": "AUSD / USDC",
           "facet": "UniswapV3Facet",
@@ -554,8 +557,12 @@
                 "Complete a bounded partial liquidity removal and a complete exit, then restore the required exposure.",
                 "Keep every Uniswap v3 operation within ticks -10 and 10 and below 10 bps slippage.",
                 "Verify that deposits and swaps consume their respective rate limits by realised amounts; liquidity removals do not replenish deposit capacity or reduce unlimited withdrawal limits.",
-                "Maintain 1 million USD of pool exposure until the next spell, with an absolute minimum of 10 days.",
-                "Treat updateIntegrations, setMaxSlippage, setTWAPSecondsAgo, key validation, and expected-revert scenarios as pre-flight or simulation evidence."
+                "Maintain 1 million USD of pool exposure until the next spell executes, with an absolute minimum of 10 days.",
+                "Treat updateIntegrations, setMaxSlippage, setTWAPSecondsAgo, key validation, and expected-revert scenarios as pre-flight or simulation evidence.",
+                "Perform the operations in the Prime's approved Facet Lindy KPI plan under CC supervision. The plan must identify the bounded roundtrip and relevant operation branches, later exposure-building operations, proposed live transaction amounts and expected on-chain evidence, and checks that provide configuration evidence rather than live Lindy exposure.",
+                "Require Dewiz and Sidestream review and technical-completeness sign-off before execution; BA Labs must check alignment with phase parameters and track the approved requirements on-chain. These are prerequisites, not records of completed review or execution.",
+                "Specify the full intended capital flow and supporting facets so BA Labs and Dewiz can check that limits accommodate every required step.",
+                "Use normal production permissions for live testing between spells. Spell/SubProxy-only configuration paths may be checked through deployment verification and exact-version fork or Tenderly simulation unless exercising that execution path is itself a testing objective."
               ],
               "operation_plan": [
                 {
@@ -669,7 +676,7 @@
               "minimum_exposure_days": 14,
               "absolute_minimum_days": 10,
               "requirements": [
-                "Supply the required exposure as soon as possible and maintain it until the next spell.",
+                "Supply the required exposure as soon as possible and maintain it until the next spell executes.",
                 "If 5 million USD was already allocated in Phase 1, maintain that allocation for four weeks; allocating above 4 million does not shorten the duration requirement."
               ],
               "dc_iam": {
@@ -733,6 +740,9 @@
               "minimum_exposure_usd": 20000000,
               "minimum_exposure_days": 14,
               "absolute_minimum_days": 10,
+              "requirements": [
+                "Establish the required exposure as soon as possible and hold it continuously until the next spell executes; retain the 14-day target and 10-day absolute minimum."
+              ],
               "dc_iam": {
                 "duty": 0,
                 "max_line_usd": 100000000,
