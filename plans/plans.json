@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-11-03.1",
+  "version": "2026-11-04.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -1695,7 +1695,8 @@
               "minimum_exposure_days": 14,
               "absolute_minimum_days": 10,
               "requirements": [
-                "Allocate at least 100 million USD promptly and maintain that exposure until Phase 6 activates, targeting 14 continuous days with a 10-day absolute minimum."
+                "Promptly establish at least 100 million USD of combined exposure across Osero's Ethereum and Base ERC4626 vaults and maintain it until Phase 6 activates, targeting 14 continuous days with a 10-day absolute minimum.",
+                "The 100 million USD minimum and 200 million USD maximum apply to the combined exposure of those vaults, rather than independently to each chain."
               ],
               "dc_iam": {
                 "duty": 0,
