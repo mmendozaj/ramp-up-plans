@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-11-04.1",
+  "version": "2026-11-05.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -1751,6 +1751,343 @@
                 },
                 {
                   "label": "ERC4626 Morpho Vault v2 withdrawal",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "osero-base-erc4626-morpho-v2",
+          "onchain_source": {
+            "chain_id": 8453,
+            "module_id": "osero-base"
+          },
+          "skyeco_url": "https://financial.skyeco.com/primes/osero",
+          "skyeco_label": "Osero on Skyeco",
+          "name": "Base Morpho Vault v2",
+          "facet": "ERC4626Facet",
+          "instance": "Morpho Gauntlet Vault v2 (Base)",
+          "kind": "vault",
+          "plan_note": "Base Phase 1 aligns with Ethereum ERC4626 Phase 4 on November 19; subsequent milestones are December 3 and December 17. Exposure requirements and offchain ceilings are aggregate across both vaults. DC-IAM, USDS mint/burn and PSM settings in the source belong to the Ethereum allocator/controller and are not Base-local contracts. Both original and additional shared copies are source references; their phase parameter bodies match as of November 5, 2026. Any later divergence requires joint source review. Contract addresses, exact rate-limit hashes, PAS pairing, cBEAM parameters and activation are not established by this plan registration.",
+          "rate_limit_metadata": [
+            {
+              "label": "ERC4626 Base Morpho Vault v2 deposit (USDC)",
+              "decimals": 6
+            },
+            {
+              "label": "ERC4626 Base Morpho Vault v2 withdrawal",
+              "decimals": 6
+            }
+          ],
+          "sources": [
+            {
+              "label": "Osero Base ERC4626 Morpho Vault v2 ramp-up plan",
+              "url": "https://docs.google.com/document/d/1Nn1_ctREUIA0wRXUqbMZvRBAnDVmg2qr8vgQsQKQ2hY/edit",
+              "visibility": "restricted"
+            },
+            {
+              "label": "Osero Base ERC4626 Morpho Vault v2 ramp-up plan — additional shared copy",
+              "url": "https://docs.google.com/document/d/1Km6JpLK-6p08iOlPMl_4wWvhekR5IpRJfrZb_248mv8/edit",
+              "visibility": "restricted"
+            }
+          ],
+          "phases": [
+            {
+              "id": "phase-1",
+              "name": "Phase 1",
+              "tentative": true,
+              "earliest_transition": "2026-11-19",
+              "minimum_exposure_usd": 40000000,
+              "requirements": [
+                "The 40 million USD minimum and 80 million USD maximum apply to combined exposure across Osero's Ethereum and Base ERC4626 vaults; do not require these amounts independently on each chain.",
+                "Establish the aggregate minimum promptly and maintain it until the next phase activates, targeting 14 continuous days with a 10-day absolute minimum. Dates are earliest proposed milestones and remain conditional on prerequisites and scheduling.",
+                "The source treats Base as a second ERC4626 instance that reuses the existing facet Lindy KPI plan and requires no additional facet-specific functional KPIs. This statement does not independently confirm Base deployment, PAS authorization, or completion of onboarding."
+              ],
+              "offchain": {
+                "crr_percent": 5,
+                "maximum_exposure_usd": 80000000
+              },
+              "rate_limit_targets": [
+                {
+                  "label": "ERC4626 Base Morpho Vault v2 deposit (USDC)",
+                  "max_amount_usd": 15000000,
+                  "slope_per_day_usd": 10000000
+                },
+                {
+                  "label": "ERC4626 Base Morpho Vault v2 withdrawal",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ],
+              "minimum_exposure_days": 14,
+              "absolute_minimum_days": 10
+            },
+            {
+              "id": "phase-2",
+              "name": "Phase 2",
+              "tentative": true,
+              "earliest_transition": "2026-12-03",
+              "minimum_exposure_usd": 100000000,
+              "requirements": [
+                "The 100 million USD minimum and 200 million USD maximum apply to combined exposure across Osero's Ethereum and Base ERC4626 vaults; do not require these amounts independently on each chain.",
+                "Establish the aggregate minimum promptly and maintain it until the next phase activates, targeting 14 continuous days with a 10-day absolute minimum. Dates are earliest proposed milestones and remain conditional on prerequisites and scheduling."
+              ],
+              "offchain": {
+                "crr_percent": "Core CRR",
+                "maximum_exposure_usd": 200000000
+              },
+              "rate_limit_targets": [
+                {
+                  "label": "ERC4626 Base Morpho Vault v2 deposit (USDC)",
+                  "max_amount_usd": 50000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "ERC4626 Base Morpho Vault v2 withdrawal",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ],
+              "minimum_exposure_days": 14,
+              "absolute_minimum_days": 10
+            },
+            {
+              "id": "phase-3",
+              "name": "Phase 3",
+              "tentative": true,
+              "earliest_transition": "2026-12-17",
+              "minimum_exposure_usd": "N/A",
+              "requirements": [
+                "Start no earlier than December 17, 2026, after completing Phase 2 aggregate minimum exposure and duration requirements.",
+                "This final ERC4626 phase establishes the standing facet-specific rate-limit targets in the source. No further Lindy-specific minimum exposure or maximum exposure ceiling applies; other risk constraints and onchain controls remain in force.",
+                "Further increases are outside this ramp-up and require a separate Prime proposal and risk review."
+              ],
+              "offchain": {
+                "crr_percent": "Core CRR",
+                "maximum_exposure_usd": "N/A"
+              },
+              "rate_limit_targets": [
+                {
+                  "label": "ERC4626 Base Morpho Vault v2 deposit (USDC)",
+                  "max_amount_usd": 50000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "ERC4626 Base Morpho Vault v2 withdrawal",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "osero-base-cctp",
+          "onchain_source": {
+            "chain_id": 8453,
+            "module_id": "osero-base"
+          },
+          "skyeco_url": "https://financial.skyeco.com/primes/osero",
+          "skyeco_label": "Osero on Skyeco",
+          "name": "Base → Ethereum CCTP supporting limits",
+          "facet": "CCTPFacet",
+          "kind": "capital_flow",
+          "plan_note": "The Base ERC4626 plan specifies these Base → Ethereum supporting transport limits on the source chain. Phase 1 proposes a 10M USDC per-domain bucket; Phases 2 and 3 propose 25M, with 50M USDC/day refill throughout and an unlimited aggregate cap. The dates follow the Base vault milestones, whose exposure requirements are shared with Ethereum. These settings are Osero proposals and do not change Spark parameters or establish deployment, approval, an audited facet version, enabled domains, or PAS activation. Review original and additional shared copies together if their contents diverge.",
+          "rate_limit_metadata": [
+            {
+              "label": "LIMIT_USDC_TO_DOMAIN_0",
+              "decimals": 6
+            },
+            {
+              "label": "LIMIT_USDC_TO_CCTP",
+              "decimals": 6
+            }
+          ],
+          "sources": [
+            {
+              "label": "Osero Base plan CCTP Base-to-Ethereum supporting limits",
+              "url": "https://docs.google.com/document/d/1Nn1_ctREUIA0wRXUqbMZvRBAnDVmg2qr8vgQsQKQ2hY/edit",
+              "visibility": "restricted"
+            },
+            {
+              "label": "Osero Base plan CCTP Base-to-Ethereum supporting limits — additional shared copy",
+              "url": "https://docs.google.com/document/d/1Km6JpLK-6p08iOlPMl_4wWvhekR5IpRJfrZb_248mv8/edit",
+              "visibility": "restricted"
+            }
+          ],
+          "phases": [
+            {
+              "id": "phase-1",
+              "name": "Phase 1 · ERC4626 supporting transport",
+              "tentative": true,
+              "earliest_transition": "2026-11-19",
+              "minimum_exposure_usd": "N/A",
+              "requirements": [
+                "These proposed transport settings accompany Osero Base ERC4626 Phase 1; apply the associated shared-vault phase prerequisites before progressing. This is not an independent CCTP exposure or completed-transfer-volume requirement.",
+                "The destination is CCTP domain 0. Verify the source-chain Controller, RateLimits, exact key hash, enabled destination, recipient and PAS/cBEAM permissions before treating these targets as executable."
+              ],
+              "rate_limit_targets": [
+                {
+                  "label": "LIMIT_USDC_TO_DOMAIN_0",
+                  "max_amount_usd": 10000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "LIMIT_USDC_TO_CCTP",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            },
+            {
+              "id": "phase-2",
+              "name": "Phase 2 · ERC4626 supporting transport",
+              "tentative": true,
+              "earliest_transition": "2026-12-03",
+              "minimum_exposure_usd": "N/A",
+              "requirements": [
+                "These proposed transport settings accompany Osero Base ERC4626 Phase 2; apply the associated shared-vault phase prerequisites before progressing. This is not an independent CCTP exposure or completed-transfer-volume requirement.",
+                "The destination is CCTP domain 0. Verify the source-chain Controller, RateLimits, exact key hash, enabled destination, recipient and PAS/cBEAM permissions before treating these targets as executable."
+              ],
+              "rate_limit_targets": [
+                {
+                  "label": "LIMIT_USDC_TO_DOMAIN_0",
+                  "max_amount_usd": 25000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "LIMIT_USDC_TO_CCTP",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            },
+            {
+              "id": "phase-3",
+              "name": "Phase 3 · ERC4626 supporting transport",
+              "tentative": true,
+              "earliest_transition": "2026-12-17",
+              "minimum_exposure_usd": "N/A",
+              "requirements": [
+                "These proposed transport settings accompany Osero Base ERC4626 Phase 3; apply the associated shared-vault phase prerequisites before progressing. This is not an independent CCTP exposure or completed-transfer-volume requirement.",
+                "The destination is CCTP domain 0. Verify the source-chain Controller, RateLimits, exact key hash, enabled destination, recipient and PAS/cBEAM permissions before treating these targets as executable."
+              ],
+              "rate_limit_targets": [
+                {
+                  "label": "LIMIT_USDC_TO_DOMAIN_0",
+                  "max_amount_usd": 25000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "LIMIT_USDC_TO_CCTP",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "osero-mainnet-cctp-base",
+          "onchain_source": {
+            "chain_id": 1,
+            "module_id": "osero-mainnet"
+          },
+          "skyeco_url": "https://financial.skyeco.com/primes/osero",
+          "skyeco_label": "Osero on Skyeco",
+          "name": "Ethereum → Base CCTP supporting limits",
+          "facet": "CCTPFacet",
+          "kind": "capital_flow",
+          "plan_note": "The Base ERC4626 plan specifies these Ethereum → Base supporting transport limits on the source chain. Phase 1 proposes a 10M USDC per-domain bucket; Phases 2 and 3 propose 25M, with 50M USDC/day refill throughout and an unlimited aggregate cap. The dates follow the Base vault milestones, whose exposure requirements are shared with Ethereum. These settings are Osero proposals and do not change Spark parameters or establish deployment, approval, an audited facet version, enabled domains, or PAS activation. Review original and additional shared copies together if their contents diverge.",
+          "rate_limit_metadata": [
+            {
+              "label": "LIMIT_USDC_TO_DOMAIN_6",
+              "decimals": 6
+            },
+            {
+              "label": "LIMIT_USDC_TO_CCTP",
+              "decimals": 6
+            }
+          ],
+          "sources": [
+            {
+              "label": "Osero Base plan CCTP Ethereum-to-Base supporting limits",
+              "url": "https://docs.google.com/document/d/1Nn1_ctREUIA0wRXUqbMZvRBAnDVmg2qr8vgQsQKQ2hY/edit",
+              "visibility": "restricted"
+            },
+            {
+              "label": "Osero Base plan CCTP Ethereum-to-Base supporting limits — additional shared copy",
+              "url": "https://docs.google.com/document/d/1Km6JpLK-6p08iOlPMl_4wWvhekR5IpRJfrZb_248mv8/edit",
+              "visibility": "restricted"
+            }
+          ],
+          "phases": [
+            {
+              "id": "phase-1",
+              "name": "Phase 1 · ERC4626 supporting transport",
+              "tentative": true,
+              "earliest_transition": "2026-11-19",
+              "minimum_exposure_usd": "N/A",
+              "requirements": [
+                "These proposed transport settings accompany Osero Base ERC4626 Phase 1; apply the associated shared-vault phase prerequisites before progressing. This is not an independent CCTP exposure or completed-transfer-volume requirement.",
+                "The destination is CCTP domain 6. Verify the source-chain Controller, RateLimits, exact key hash, enabled destination, recipient and PAS/cBEAM permissions before treating these targets as executable."
+              ],
+              "rate_limit_targets": [
+                {
+                  "label": "LIMIT_USDC_TO_DOMAIN_6",
+                  "max_amount_usd": 10000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "LIMIT_USDC_TO_CCTP",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            },
+            {
+              "id": "phase-2",
+              "name": "Phase 2 · ERC4626 supporting transport",
+              "tentative": true,
+              "earliest_transition": "2026-12-03",
+              "minimum_exposure_usd": "N/A",
+              "requirements": [
+                "These proposed transport settings accompany Osero Base ERC4626 Phase 2; apply the associated shared-vault phase prerequisites before progressing. This is not an independent CCTP exposure or completed-transfer-volume requirement.",
+                "The destination is CCTP domain 6. Verify the source-chain Controller, RateLimits, exact key hash, enabled destination, recipient and PAS/cBEAM permissions before treating these targets as executable."
+              ],
+              "rate_limit_targets": [
+                {
+                  "label": "LIMIT_USDC_TO_DOMAIN_6",
+                  "max_amount_usd": 25000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "LIMIT_USDC_TO_CCTP",
+                  "max_amount_usd": "unlimited",
+                  "slope_per_day_usd": 0
+                }
+              ]
+            },
+            {
+              "id": "phase-3",
+              "name": "Phase 3 · ERC4626 supporting transport",
+              "tentative": true,
+              "earliest_transition": "2026-12-17",
+              "minimum_exposure_usd": "N/A",
+              "requirements": [
+                "These proposed transport settings accompany Osero Base ERC4626 Phase 3; apply the associated shared-vault phase prerequisites before progressing. This is not an independent CCTP exposure or completed-transfer-volume requirement.",
+                "The destination is CCTP domain 6. Verify the source-chain Controller, RateLimits, exact key hash, enabled destination, recipient and PAS/cBEAM permissions before treating these targets as executable."
+              ],
+              "rate_limit_targets": [
+                {
+                  "label": "LIMIT_USDC_TO_DOMAIN_6",
+                  "max_amount_usd": 25000000,
+                  "slope_per_day_usd": 50000000
+                },
+                {
+                  "label": "LIMIT_USDC_TO_CCTP",
                   "max_amount_usd": "unlimited",
                   "slope_per_day_usd": 0
                 }
