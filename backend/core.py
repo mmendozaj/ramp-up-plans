@@ -137,6 +137,9 @@ def apply_track_proposal(plans: dict, document: dict, proposal: dict) -> dict:
             raise ValueError(f"{document['id']}: phase IDs must be strings")
         if new_ids[: len(old_ids)] != old_ids or len(set(new_ids)) != len(new_ids):
             raise ValueError(f"{document['id']}: existing phase IDs and order must be preserved")
+        for before, after in zip(original["phases"], revised["phases"]):
+            if before.get("conditional_rate_limit_targets") != after.get("conditional_rate_limit_targets"):
+                raise ValueError(f"{document['id']}: conditional rate-limit targets need manual review")
         if document.get("requirements_only"):
             originals = {phase["id"]: phase for phase in original["phases"]}
             for phase in revised["phases"]:

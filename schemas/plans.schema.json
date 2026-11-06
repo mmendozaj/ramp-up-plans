@@ -66,6 +66,7 @@
         "minimum_exposure_days": {"type": "number", "minimum": 0},
         "minimum_phase_days": {"type": "number", "minimum": 0},
         "absolute_minimum_days": {"type": "number", "minimum": 0},
+        "conditional_rate_limit_targets": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["id", "condition", "source_url", "rate_limit_targets"], "properties": {"id": {"type": "string", "minLength": 1}, "condition": {"type": "string", "minLength": 1}, "source_url": {"type": "string", "format": "uri"}, "rate_limit_targets": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/rateTarget"}}}}},
         "rate_limit_targets": {
           "type": "array",
           "items": {"$ref": "#/$defs/rateTarget"}
@@ -81,6 +82,7 @@
         "facet": {"type": "string", "minLength": 1},
         "skyeco_url": {"type": "string", "format": "uri"},
         "skyeco_label": {"type": "string", "minLength": 1},
+        "rate_limit_metadata": {"type": "array", "items": {"type": "object", "required": ["label", "decimals"], "properties": {"label": {"type": "string", "minLength": 1}, "decimals": {"type": "integer", "minimum": 0}, "expected_key": {"type": "string", "pattern": "^0x[0-9a-fA-F]{64}$"}}}},
         "onchain_source": {"$ref": "#/$defs/onchainSource"},
         "sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/source"}},
         "phases": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/phase"}}

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026-11-05.2",
+  "version": "2026-11-06.1",
   "policy_defaults": {
     "hop_seconds": 57600,
     "max_change": "1.20",
@@ -1502,7 +1502,8 @@
           "id": "osero-erc4626-morpho-v2",
           "onchain_source": {
             "chain_id": 1,
-            "module_id": "osero-mainnet"
+            "module_id": "osero-mainnet",
+            "rate_limits_address": "0xE9a78f34fe497e2186f81B8c014cd93B308BC62a"
           },
           "skyeco_url": "https://forum.skyeco.com/t/october-8-2026-proposed-changes-to-osero-for-upcoming-spell/28253",
           "skyeco_label": "Osero October 8 technical scope",
@@ -1510,7 +1511,7 @@
           "facet": "ERC4626Facet",
           "instance": "Morpho Vault v2",
           "kind": "vault",
-          "plan_note": "Phase dates are proposed earliest milestones and remain conditional on prerequisites and spell scheduling. The document specifies a zero Phase 1 deposit slope and 650k USDC/day in Phase 2; the separate BA Labs suggestion of 650k/day for initial PAS configuration does not establish inclusion in the October 8 spell. The document governs these proposed phase targets. DC-IAM, USDS, and PSM values describe shared PAU controller parameters. Phase 6 establishes the final ERC4626 parameters in this plan, subject to completion of Phase 5 exposure requirements. Parameter identification establishes neither execution nor activation, approval, or KPI completion.",
+          "plan_note": "Phase dates are proposed earliest milestones and remain conditional on prerequisites and spell scheduling. The document specifies a zero Phase 1 deposit slope and 650k USDC/day in Phase 2; the separate BA Labs suggestion of 650k/day for initial PAS configuration does not establish inclusion in the October 8 spell. The document governs these proposed phase targets. DC-IAM, USDS, and PSM values describe shared PAU controller parameters. Phase 6 establishes the final ERC4626 parameters in this plan, subject to completion of Phase 5 exposure requirements. Parameter identification establishes neither execution nor activation, approval, or KPI completion. The November 19 public review specifies a lower Base starting deposit setting if this Mainnet vault minimum exposure is unmet; this dependency does not change the Mainnet phase target or attest that the shared exposure gate has been met.",
           "rate_limit_metadata": [
             {
               "label": "ERC4626 Morpho Vault v2 deposit (USDC)",
@@ -1538,6 +1539,16 @@
               "label": "Osero ERC4626 Facet Lindy KPI plan",
               "url": "https://app.notion.com/p/Osero-testing-ERC4626Facet-functionalities-20bd79b5de3882d2bc45819b171bdcb8?v=2abd79b5de3880549551000cfd09ccc4",
               "visibility": "restricted"
+            },
+            {
+              "label": "Osero November 19 Ethereum/Base technical scope",
+              "url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388",
+              "visibility": "public"
+            },
+            {
+              "label": "BA Labs November 19 technical-scope review",
+              "url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388/3",
+              "visibility": "public"
             }
           ],
           "phases": [
@@ -1762,23 +1773,26 @@
           "id": "osero-base-erc4626-morpho-v2",
           "onchain_source": {
             "chain_id": 8453,
-            "module_id": "osero-base"
+            "module_id": "osero-base",
+            "rate_limits_address": "0xd9E629588c48722E4c1bfcfb17829FecAf73839f"
           },
-          "skyeco_url": "https://financial.skyeco.com/primes/osero",
-          "skyeco_label": "Osero on Skyeco",
+          "skyeco_url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388",
+          "skyeco_label": "Osero November 19 technical scope",
           "name": "Base Morpho Vault v2",
           "facet": "ERC4626Facet",
           "instance": "Morpho Gauntlet Vault v2 (Base)",
           "kind": "vault",
-          "plan_note": "Base Phase 1 aligns with Ethereum ERC4626 Phase 4 on November 19; subsequent milestones are December 3 and December 17. Exposure requirements and offchain ceilings are aggregate across both vaults. DC-IAM, USDS mint/burn and PSM settings in the source belong to the Ethereum allocator/controller and are not Base-local contracts. Both original and additional shared copies are source references; their phase parameter bodies match as of November 5, 2026. Any later divergence requires joint source review. Contract addresses, exact rate-limit hashes, PAS pairing, cBEAM parameters and activation are not established by this plan registration.",
+          "plan_note": "Normal Phase 1 aligns with Ethereum ERC4626 Phase 4 no earlier than November 19, followed by conditional December 3 and December 17 milestones. Exposure requirements and offchain ceilings are aggregate across both vaults. The November 19 technical scope identifies the deployed Base contracts and key hashes; deployment does not establish initialization or PAS authorization. If the Mainnet vault minimum exposure is unmet entering the November 19 spell, BA Labs requires reducing Base deposits via cBEAM to a 5M USDC maximum and 1M USDC/day refill. Subsequent increases require phased risk review. The default Phase 1 targets below apply only when their exposure gate is satisfied; no operator change is authorized by this plan. Ethereum DC-IAM, USDS and PSM controls are not Base-local contracts.",
           "rate_limit_metadata": [
             {
               "label": "ERC4626 Base Morpho Vault v2 deposit (USDC)",
-              "decimals": 6
+              "decimals": 6,
+              "expected_key": "0x4530b5750e1bd4febbd736da62648a217afd5809f6d9f626fdae219ba97adf32"
             },
             {
               "label": "ERC4626 Base Morpho Vault v2 withdrawal",
-              "decimals": 6
+              "decimals": 6,
+              "expected_key": "0x6962440fb603fec4e7a4a755188471e31b1701e8f60323358e62b6e0f0c596aa"
             }
           ],
           "sources": [
@@ -1791,6 +1805,16 @@
               "label": "Osero Base ERC4626 Morpho Vault v2 ramp-up plan — additional shared copy",
               "url": "https://docs.google.com/document/d/1Km6JpLK-6p08iOlPMl_4wWvhekR5IpRJfrZb_248mv8/edit",
               "visibility": "restricted"
+            },
+            {
+              "label": "Osero November 19 Ethereum/Base technical scope",
+              "url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388",
+              "visibility": "public"
+            },
+            {
+              "label": "BA Labs November 19 technical-scope review",
+              "url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388/3",
+              "visibility": "public"
             }
           ],
           "phases": [
@@ -1801,6 +1825,7 @@
               "earliest_transition": "2026-11-19",
               "minimum_exposure_usd": 40000000,
               "requirements": [
+                "If the Mainnet vault has not met its minimum exposure requirement entering the November 19, 2026 spell, reduce the Base vault deposit setting via cBEAM to 5M USDC maximum / 1M USDC daily refill. Confirm the exposure gate, applicable starting settings and PAS defaults before authorizing subsequent phased increases.",
                 "The 40 million USD minimum and 80 million USD maximum apply to combined exposure across Osero's Ethereum and Base ERC4626 vaults; do not require these amounts independently on each chain.",
                 "Establish the aggregate minimum promptly and maintain it until the next phase activates, targeting 14 continuous days with a 10-day absolute minimum. Dates are earliest proposed milestones and remain conditional on prerequisites and scheduling.",
                 "The source treats Base as a second ERC4626 instance that reuses the existing facet Lindy KPI plan and requires no additional facet-specific functional KPIs. This statement does not independently confirm Base deployment, PAS authorization, or completion of onboarding."
@@ -1822,7 +1847,21 @@
                 }
               ],
               "minimum_exposure_days": 14,
-              "absolute_minimum_days": 10
+              "absolute_minimum_days": 10,
+              "conditional_rate_limit_targets": [
+                {
+                  "id": "mainnet-minimum-exposure-unmet",
+                  "condition": "If the Mainnet vault has not met its minimum exposure requirement entering the November 19, 2026 spell, reduce the Base vault deposit setting via cBEAM to 5M USDC maximum / 1M USDC daily refill. Confirm the exposure gate, applicable starting settings and PAS defaults before authorizing subsequent phased increases.",
+                  "source_url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388/3",
+                  "rate_limit_targets": [
+                    {
+                      "label": "ERC4626 Base Morpho Vault v2 deposit (USDC)",
+                      "max_amount_usd": 5000000,
+                      "slope_per_day_usd": 1000000
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "phase-2",
@@ -1832,7 +1871,8 @@
               "minimum_exposure_usd": 100000000,
               "requirements": [
                 "The 100 million USD minimum and 200 million USD maximum apply to combined exposure across Osero's Ethereum and Base ERC4626 vaults; do not require these amounts independently on each chain.",
-                "Establish the aggregate minimum promptly and maintain it until the next phase activates, targeting 14 continuous days with a 10-day absolute minimum. Dates are earliest proposed milestones and remain conditional on prerequisites and scheduling."
+                "Establish the aggregate minimum promptly and maintain it until the next phase activates, targeting 14 continuous days with a 10-day absolute minimum. Dates are earliest proposed milestones and remain conditional on prerequisites and scheduling.",
+                "If the lower 5M/1M fallback was applied, confirm its restoration or an explicitly approved transition path before applying these later targets. Calendar spacing alone does not establish feasibility or approval."
               ],
               "offchain": {
                 "crr_percent": "Core CRR",
@@ -1862,7 +1902,8 @@
               "requirements": [
                 "Start no earlier than December 17, 2026, after completing Phase 2 aggregate minimum exposure and duration requirements.",
                 "This final ERC4626 phase establishes the standing facet-specific rate-limit targets in the source. No further Lindy-specific minimum exposure or maximum exposure ceiling applies; other risk constraints and onchain controls remain in force.",
-                "Further increases are outside this ramp-up and require a separate Prime proposal and risk review."
+                "Further increases are outside this ramp-up and require a separate Prime proposal and risk review.",
+                "If the lower 5M/1M fallback was applied, confirm its restoration or an explicitly approved transition path before applying these later targets. Calendar spacing alone does not establish feasibility or approval."
               ],
               "offchain": {
                 "crr_percent": "Core CRR",
@@ -1887,22 +1928,25 @@
           "id": "osero-base-cctp",
           "onchain_source": {
             "chain_id": 8453,
-            "module_id": "osero-base"
+            "module_id": "osero-base",
+            "rate_limits_address": "0xd9E629588c48722E4c1bfcfb17829FecAf73839f"
           },
-          "skyeco_url": "https://financial.skyeco.com/primes/osero",
-          "skyeco_label": "Osero on Skyeco",
+          "skyeco_url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388",
+          "skyeco_label": "Osero November 19 technical scope",
           "name": "Base → Ethereum CCTP supporting limits",
           "facet": "CCTPFacet",
           "kind": "capital_flow",
-          "plan_note": "The Base ERC4626 plan specifies these Base → Ethereum supporting transport limits on the source chain. Phase 1 proposes a 10M USDC per-domain bucket; Phases 2 and 3 propose 25M, with 50M USDC/day refill throughout and an unlimited aggregate cap. The dates follow the Base vault milestones, whose exposure requirements are shared with Ethereum. These settings are Osero proposals and do not change Spark parameters or establish deployment, approval, an audited facet version, enabled domains, or PAS activation. Review original and additional shared copies together if their contents diverge.",
+          "plan_note": "The Base ERC4626 plan specifies these Base → Ethereum supporting transport limits on the source chain. Phase 1 proposes a 10M USDC per-domain bucket; Phases 2 and 3 propose 25M, with 50M USDC/day refill throughout and an unlimited aggregate cap. The dates follow the Base vault milestones, whose exposure requirements are shared with Ethereum. These settings are Osero proposals and do not change Spark parameters or establish deployment, approval, an audited facet version, enabled domains, or PAS activation. Review original and additional shared copies together if their contents diverge. The November 19 public technical scope and BA Labs review now identify the source-chain RateLimits contract and exact key hashes and confirm the normal initial transport settings. This source reconciliation does not establish executed configuration, phase activation or permission for subsequent increases; later settings remain subject to phased risk review.",
           "rate_limit_metadata": [
             {
               "label": "LIMIT_USDC_TO_DOMAIN_0",
-              "decimals": 6
+              "decimals": 6,
+              "expected_key": "0x90b598dae614822d554ec4f627bb5feab505106473a7911f34b36c0b3b9695c7"
             },
             {
               "label": "LIMIT_USDC_TO_CCTP",
-              "decimals": 6
+              "decimals": 6,
+              "expected_key": "0x0476a9fd902eafdb5bcdabd9f0523dd7aacf7aa0c38c0e6ab912f5fed00f8e11"
             }
           ],
           "sources": [
@@ -1915,6 +1959,16 @@
               "label": "Osero Base plan CCTP Base-to-Ethereum supporting limits — additional shared copy",
               "url": "https://docs.google.com/document/d/1Km6JpLK-6p08iOlPMl_4wWvhekR5IpRJfrZb_248mv8/edit",
               "visibility": "restricted"
+            },
+            {
+              "label": "Osero November 19 Ethereum/Base technical scope",
+              "url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388",
+              "visibility": "public"
+            },
+            {
+              "label": "BA Labs November 19 technical-scope review",
+              "url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388/3",
+              "visibility": "public"
             }
           ],
           "phases": [
@@ -1993,22 +2047,25 @@
           "id": "osero-mainnet-cctp-base",
           "onchain_source": {
             "chain_id": 1,
-            "module_id": "osero-mainnet"
+            "module_id": "osero-mainnet",
+            "rate_limits_address": "0xE9a78f34fe497e2186f81B8c014cd93B308BC62a"
           },
-          "skyeco_url": "https://financial.skyeco.com/primes/osero",
-          "skyeco_label": "Osero on Skyeco",
+          "skyeco_url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388",
+          "skyeco_label": "Osero November 19 technical scope",
           "name": "Ethereum → Base CCTP supporting limits",
           "facet": "CCTPFacet",
           "kind": "capital_flow",
-          "plan_note": "The Base ERC4626 plan specifies these Ethereum → Base supporting transport limits on the source chain. Phase 1 proposes a 10M USDC per-domain bucket; Phases 2 and 3 propose 25M, with 50M USDC/day refill throughout and an unlimited aggregate cap. The dates follow the Base vault milestones, whose exposure requirements are shared with Ethereum. These settings are Osero proposals and do not change Spark parameters or establish deployment, approval, an audited facet version, enabled domains, or PAS activation. Review original and additional shared copies together if their contents diverge.",
+          "plan_note": "The Base ERC4626 plan specifies these Ethereum → Base supporting transport limits on the source chain. Phase 1 proposes a 10M USDC per-domain bucket; Phases 2 and 3 propose 25M, with 50M USDC/day refill throughout and an unlimited aggregate cap. The dates follow the Base vault milestones, whose exposure requirements are shared with Ethereum. These settings are Osero proposals and do not change Spark parameters or establish deployment, approval, an audited facet version, enabled domains, or PAS activation. Review original and additional shared copies together if their contents diverge. The November 19 public technical scope and BA Labs review now identify the source-chain RateLimits contract and exact key hashes and confirm the normal initial transport settings. This source reconciliation does not establish executed configuration, phase activation or permission for subsequent increases; later settings remain subject to phased risk review.",
           "rate_limit_metadata": [
             {
               "label": "LIMIT_USDC_TO_DOMAIN_6",
-              "decimals": 6
+              "decimals": 6,
+              "expected_key": "0xbab34b58275e6736d9a866c36a2d88d671ed8b627228e6bd17efb1b076a59881"
             },
             {
               "label": "LIMIT_USDC_TO_CCTP",
-              "decimals": 6
+              "decimals": 6,
+              "expected_key": "0x0476a9fd902eafdb5bcdabd9f0523dd7aacf7aa0c38c0e6ab912f5fed00f8e11"
             }
           ],
           "sources": [
@@ -2021,6 +2078,16 @@
               "label": "Osero Base plan CCTP Ethereum-to-Base supporting limits — additional shared copy",
               "url": "https://docs.google.com/document/d/1Km6JpLK-6p08iOlPMl_4wWvhekR5IpRJfrZb_248mv8/edit",
               "visibility": "restricted"
+            },
+            {
+              "label": "Osero November 19 Ethereum/Base technical scope",
+              "url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388",
+              "visibility": "public"
+            },
+            {
+              "label": "BA Labs November 19 technical-scope review",
+              "url": "https://forum.skyeco.com/t/november-19-2026-proposed-changes-to-osero-for-upcoming-spell/28388/3",
+              "visibility": "public"
             }
           ],
           "phases": [

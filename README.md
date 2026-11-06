@@ -175,3 +175,18 @@ Tracks identify their observation source using `onchain_source.chain_id` and
 identity mappings. `grove-rate-limit-monitor` supplies the observed data to both
 websites. Supported additions need backend registry/data and reviewed plan
 changes, not frontend code changes.
+
+## Osero Base technical-scope reconciliation — November 6, 2026
+
+The November 19 public technical scope and BA Labs reply are linked from the
+Osero Mainnet/Base vault and CCTP tracks. Base observations map to module
+`osero-base`, chain 8453, and its exact RateLimits address; the Ethereum CCTP
+route retains its separate chain-1 mapping. Expected key hashes are explicit.
+The Base vault's Phase 1 requirements and `conditional_rate_limit_targets`
+record the 5M maximum / 1M-per-day fallback when the Mainnet exposure gate is
+unmet. No activation, exposure confirmation or operator authorization is added.
+
+The document worker preserves these independently reviewed conditional targets;
+changing or deleting them requires manual review. Restart the worker after
+deploying this code. Forum links are plan references, rather than Google Doc
+watcher entries; this update does not claim automatic forum monitoring.

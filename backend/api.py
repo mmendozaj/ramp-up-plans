@@ -120,6 +120,7 @@ INSTRUCTIONS = (
     "the schema. Include a complete revised JSON object for each affected track that requires a change, "
     "and omit unchanged tracks. Keep every existing track ID and phase ID in the same order. Preserve "
     "track names, onchain_source identity mappings, unrelated metadata, public source links, and all unsupported values. A source URL may intentionally be shared by tracks on different chains; apply requirements to each mapped track without transferring execution evidence or chain identity. Add no invented dates, targets, "
+    "Preserve phase conditional_rate_limit_targets exactly; changes to independently reviewed fallback conditions require manual review. "
     "CRR, exposure thresholds, or qualitative KPIs. Do not infer phase activation, execution, approval, "
     "KPI completion, or operator authorization. If the source is ambiguous, leave the value unchanged and "
     "describe the ambiguity in review_notes. Paraphrase prose in track_json, change_summary, and "
