@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-11-05T09:36:29.248Z",
-  "plan_version": "2026-11-05.1",
+  "captured_at_utc": "2026-11-05T10:17:49.699Z",
+  "plan_version": "2026-11-05.2",
   "documents": {
     "grove-buidl": {
       "sha256": "048cbe8d05ce61d4cc0a0c8d635ef9574bca990539ffdcbd863f46bcd64e057c"
@@ -10,13 +10,13 @@
       "sha256": "07deb04ae431d56eff3ed22e6d06a3ef4529369bddad5772ca031f928920f672"
     },
     "grove-uniswap-v3": {
-      "sha256": "7e4b2fd33b86b28a0a2a7ceaa66695376355fda1fc50ba010753916cd98c3e32"
+      "sha256": "601ac44733697ce6341706d95558b4327c8fffd319cd0adb993723487181406b"
     },
     "osero-aave": {
       "sha256": "303829a4fe06c277180e929940932be0157960a1fa58c8c2bdf57666128e428e"
     },
     "osero-erc4626-morpho-v2": {
-      "sha256": "e66e212ac9e552cd12ac55d541e7f3f27bd7a7b3494e2032ec29e595f9419dd3"
+      "sha256": "216c958fb2ba22f83a6e0575e309721b2c3a86f7a330270356ecd0c229190167"
     },
     "spark-arbitrum-cctp-v2": {
       "sha256": "4123555d91dc359e156107fe636cf4be33f273f31b57f1ee13ac96c870881565"
@@ -25,7 +25,7 @@
       "sha256": "4123555d91dc359e156107fe636cf4be33f273f31b57f1ee13ac96c870881565"
     },
     "osero-base-erc4626-morpho-v2": {
-      "sha256": "e0d261f3952d7aff5377c8f55690cc09d504e720feb45168bbd3c4f538d647cc"
+      "sha256": "2c38ac6baff560c0e9508633098717d26361b736fb74bdda11205ca0724534e3"
     },
     "osero-base-erc4626-morpho-v2-shared-copy": {
       "sha256": "5579252c4572da6eadd4c1c91e069b8f68ee0ef9adbaa5a872bc11e012e20bf8"
