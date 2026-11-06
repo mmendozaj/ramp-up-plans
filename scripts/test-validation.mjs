@@ -44,3 +44,16 @@ assert.deepEqual(semanticValidation(plans, withoutExistingEvidence), []);
 withoutExistingEvidence.tracks["osero-aave"] = { status: "approved_without_evidence", current_phase_id: null, target_phase_id: null };
 assert(semanticValidation(plans, withoutExistingEvidence).some((error) => error.includes("status: is not supported")));
 console.log("Unattested plans stay unconfirmed; supplied attestations remain validated.");
+
+const baseVault = (candidate) => candidate.primes.find((prime) => prime.id === "osero")
+  .tracks.find((track) => track.id === "osero-base-erc4626-morpho-v2");
+const fallback = baseVault(plans).phases[0].conditional_rate_limit_targets[0];
+assert.equal(fallback.rate_limit_targets[0].max_amount_usd, 5000000);
+assert.equal(fallback.rate_limit_targets[0].slope_per_day_usd, 1000000);
+const invalidFallback = structuredClone(plans);
+baseVault(invalidFallback).phases[0].conditional_rate_limit_targets[0].rate_limit_targets[0].max_amount_usd = -1;
+assert.equal(validatePlans(invalidFallback), false);
+const invalidKey = structuredClone(plans);
+baseVault(invalidKey).rate_limit_metadata[0].expected_key = "0xinvalid";
+assert.equal(validatePlans(invalidKey), false);
+console.log("Conditional fallback targets and exact key metadata are validated independently of normal phase targets.");
